@@ -1,0 +1,79 @@
+﻿@page
+@using global::Models
+@model EditSkillsMatrix.Pages.Admin.Categories.CreateModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-secondary pl-3">Create A New Skills Matrix Question</h2>
+            <hr />
+       </div>
+   </div>
+        <div asp-validation-summary=All class=text text-warning></div>
+        <div class="mb-3"> 
+            <label asp-for="@Model.Category.Question">Question</label>
+            <div class="col-9"> 
+            <input asp-for="@Model.Category.Question" class="form-control" placeholder="Enter Question Text"/>
+            <span asp-validation-for="Category.Question" class="text-danger"></span>
+            
+            </div>
+         <div class="mb-3"> 
+            <label asp-for="Category.Skill">Question Area</label>
+                 <div class="col-9"> 
+           <select asp-for="Category.Skill" class="form-select " placeholder="Enter Category Name">
+             
+             <option selected disabled value="">Choose Area or Skill...</option>
+               <option value="Agile">Agile Methodology</option>
+               <option value="Azure">Azure Applications</option>
+               <option value="Code">Code and Coding Languages</option>
+               <option value="Microsoft">Microsoft Applications</option>
+               <option value="Testing">Testing</option>
+              <option value="Web">Web & Cloud</option>
+              <option value="Adhoc">Adhoc Questions currently unassigned to a group</option>
+            </select>
+            <span asp-validation-for="Category.Skill" class="text-danger"></span>
+                
+            </div>
+        </div>
+        <div class="mb-3"> 
+<label asp-for="Category.Skill">Choose the Team who will see this question</label>               
+<div class="col-9"> 
+              <select asp-for="Category.Team" class="form-select " placeholder="Enter Team who will see this question">
+               <option selected disabled value="">Who is this for?...</option>
+               <option value="Data Science">Data Scientist</option>
+               <option value="Engineer">Data Engineer</option>
+               <option value="People">People</option>
+               <option value="QA DM">QA and Data Management</option>
+               <option value="Marketing Comms">Marketing Technology & Communications</option>
+               <option value="Join The Dots">Join The Dots</option>
+               <option value="Strategy">Strategic Consulting</option>
+               <option value="Growth">Growth</option>
+               <option value="Client Services">Client Services</option>
+               <option value="Finance">Finance</option>
+           </select>
+            <span asp-validation-for="Category.Team" class="text-danger"></span>
+        </div>
+ </div>
+           <div class="mb-3">
+            <label asp-for="Category.DisplayOrder"></label>
+            <div class="col-3">
+            <input asp-for="Category.DisplayOrder" class="form-control" placeholder="Enter Order No."/>
+            <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-warning" style="width:180px;">
+            <i class="bi bi-boombox">&nbsp;&nbsp;</i>Create</button>
+            <a asp-page="Index" class="btn btn-primary" style="width:180px;">
+            <i class="bi bi-emoji-heart-eyes">&nbsp;&nbsp;</i>Back to List</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+    <partial name="_ValidationScriptsPartial.cshtml" />
+    }
+}

@@ -1,0 +1,98 @@
+﻿@page 
+@model EditSkillsMatrix.Pages.Admin.Categories.IndexModel
+@{
+    ViewData["Title"] = "Amend Questions";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 style="color:HighlightText; color:lawngreen;font-family:Consolas">Skills Matrix Table</h2>
+       </div>
+       </div>
+    <br />
+    <form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>Filter Table By Team & Question Content:<br />
+           <input type="text" name="SearchString" value="@Model.CurrentFilter" placeholder="Team / Question Look-up" class="col-md-3"> 
+           <button type="submit" class="btn btn-primary"><i class="bi bi-search"> </i>Search</button> |
+                      
+         
+            <a asp-page="./Index" class="btn btn-warning"><i class="bi bi-layer-backward"> </i>Clear Search</a> |
+            <a asp-page="./Counts" class="btn btn-info"><i class="bi bi-list-ol"> </i>Qty's of Questions by Team</a>
+            <a asp-page="Create" class="btn btn-success" style="float: right;">
+                 <i class="bi bi-tree">  </i>Create New Question</a>
+           
+        </p>
+    </div>
+</form>
+    
+    <table class="table table-bordered table-striped table-secondary">
+        <thead class="table-primary" style="font-size:18px">
+                
+            <tr>
+                  <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.Team">
+                    @Html.DisplayNameFor(model => model.Categories[0].Team)
+                </a>
+            </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort">
+                    @Html.DisplayNameFor(model => model.Categories[0].Question)
+                </a>
+            </th>
+            <th>
+                 <a asp-page="./Index" asp-items="@Model.QuestSort">
+                Category
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort1">
+                    @Html.DisplayNameFor(model => model.Categories[0].DisplayOrder)
+                </a>
+                </th>
+                   <th style="text-align:center">
+                    Edit / Delete
+                </th>
+        </thead>
+        <tbody style="font-size:18px">
+            @foreach(var obj in Model.Categories)
+            {
+
+
+                 <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => obj.Team)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => obj.Question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => obj.Skill)
+                </td>
+                <td>
+                  <div style="text-align:center">
+                    @Html.DisplayFor(modelItem => obj.DisplayOrder)
+                    </div>
+                </td>
+              
+                        <td>
+                    <div class="btn btn-group" role="group" >
+                    <a asp-page="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil"></i>
+                        </a>
+                                         
+           
+                    <a asp-page="Delete" asp-route-id="@obj.Id" class="btn btn-warning mx-2"><i class="bi bi-trash3"></i>
+                        </a>
+                        </div>
+                        </td>
+                 
+                
+            </tr>
+            }
+      </tbody>
+    </table>
+
+
+</div>
+

@@ -1,0 +1,40 @@
+﻿@page
+@model EditSkillsMatrix.Pages.TeamAdd.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create A New Team Entry</h1>
+
+<h4>Team Name and Value that is passed to the Database</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Team.TeamName" class="control-label"></label>
+                <input asp-for="Team.TeamName" class="form-control" />
+                <span asp-validation-for="Team.TeamName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Team.Value" class="control-label"></label>
+                <input asp-for="Team.Value" class="form-control" />
+                <span asp-validation-for="Team.Value" class="text-danger"></span>
+            </div><br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-page="Index" class="btn btn-warning" style="width:180px;">
+            <i class="bi bi-emoji-heart-eyes">&nbsp;&nbsp;</i>Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
