@@ -7,21 +7,21 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 style="color:HighlightText; color:lawngreen;font-family:Consolas">Skills Matrix Table</h2>
+            <h2 style="color:HighlightText; color:lawngreen;font-family:Consolas">Skills Matrix Questions Table</h2>
        </div>
        </div>
     <br />
     <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
-        <p>Filter Table By Team & Question Content:<br />
+        <p>Filter By Team &/or Question Content:<br />
            <input type="text" name="SearchString" value="@Model.CurrentFilter" placeholder="Team / Question Look-up" class="col-md-3"> 
-           <button type="submit" class="btn btn-primary"><i class="bi bi-search"> </i>Search</button> |
+           <button type="submit" class="btn btn-primary btn-sm"><i class="bi bi-search"> </i>Search</button> |
                       
          
-            <a asp-page="./Index" class="btn btn-warning"><i class="bi bi-layer-backward"> </i>Clear Search</a> |
-            <a asp-page="./Counts" class="btn btn-info"><i class="bi bi-list-ol"> </i>Qty's of Questions by Team</a>
+            <a asp-page="./Index" class="btn btn-warning btn-sm"><i class="bi bi-layer-backward"> </i>Clear Filters</a> |
+            <a asp-page="./Counts" class="btn btn-info btn-sm"><i class="bi bi-list-ol"> </i>Qty of Questions by Team</a>
             <a asp-page="Create" class="btn btn-success" style="float: right;">
-                 <i class="bi bi-tree">  </i>Create New Question</a>
+                 <i class="bi bi-tree">  </i>Create A New Question <i class="bi bi-clipboard2-pulse-fill"></i></a>
            
         </p>
     </div>

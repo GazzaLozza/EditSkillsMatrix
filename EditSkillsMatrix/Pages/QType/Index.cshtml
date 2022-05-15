@@ -1,0 +1,45 @@
+﻿@page
+@model EditSkillsMatrix.Pages.QType.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Create A New Question Category Type</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-success mx-2">Create New Category Type   <i class="bi bi-clipboard2-pulse-fill"></i></a>
+</p>
+<table class="table table-bordered table-striped table-secondary">
+    <thead class="table-primary" style="font-size:18px">
+ 
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QtypeMod[0].Genre)
+            </th>
+                  </th>
+                   <th style="text-align:center">
+                    Edit / Delete
+                </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.QtypeMod) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td style="text-align:center">
+                <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil"></i></a>
+               
+                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-warning mx-2"><i class="bi bi-trash3"></i>
+                        </a>
+            </td>
+        </tr>
+     
+                
+}
+    </tbody>
+</table>
+
+ 

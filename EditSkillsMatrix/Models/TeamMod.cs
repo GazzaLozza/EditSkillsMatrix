@@ -8,16 +8,19 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class Team
+    public class TeamMod
     {
       
         public int Id { get; set; }
-    
-        public string TeamName { get; set; }
 
+        [Display(Name = "Team Name")]
+        [MaxLength(40)]
+        public string TeamName { get; set; }
+        [Display(Name = "Value Passed to DB")]
+        [MaxLength(40)]
         public string Value { get; set; }
 
-        public IEnumerable<Team> Teams { get; set; }
+        public IEnumerable<TeamMod> Teams { get; set; }
 
 
 

@@ -1,8 +1,7 @@
-﻿@page  
-@model EditSkillsMatrix.Pages.Questions.QuestionsModel
+﻿@page 
+@model EditSkillsMatrix.Pages.Admin.Categories.LoginModel
 @{
-    ViewData["Title"] = "SM_Questions";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
+   
 }
 <div>
 <h1 class="text-center" style="color:fuchsia;font-family:Consolas;">Skills Matrix</h1>
@@ -10,43 +9,39 @@
 </div>  
 <p class="text-success" style="font-family:Consolas"><b>Radio Button Key: </b> <br />1 is the lowest score, and 5 is the highest rated / score</p>
 <br />  
- <form asp-action="Submit" asp-controller="Questions">
+ <form asp-action="Submit" asp-controller="Login">
+
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                <div class="form-group form-group-inline col-9">
                 <label asp-for="Answers.User" class="control-label"></label>
-                <input asp-for="Answers.User" class="form-control" placeholder="Adding a Username is optional" />
+                <input asp-for="Answers.User" class="form-control" placeholder="Add your Name" />
                 <span asp-validation-for="Answers.User" class="text-danger"></span>
             </div><br />
             <div class="form-group form-group-inline">
                     <label asp-for="Answers.Role">Choose your Team or Area (required)</label>
                     </div> 
                  <div class="col-9"> 
-           <select id="dd" asp-for="Answers.Role" asp-items="@(new SelectList(Model.Teams,"Value","TeamName"))" class="form-select" onchange="select">
-        <option selected disabled value="food">Choose your Team</option>
-            @*   <option selected disabled value="">Choose your Team</option>
-               <option value="Data Science">Data Scientist</option>
-               <option value="Engineer">Data Engineer</option>
-               <option value="People">People</option>
-               <option value="QA DM">QA and Data Management</option>
-               <option value="Marketing Comms">Marketing Technology & Communications</option>
-               <option value="Join The Dots">Join The Dots</option>
-               <option value="Strategy">Strategic Consulting</option>
-               <option value="Growth">Growth</option>
-               <option value="Client Services">Client Services</option>
-               <option value="Finance">Finance</option>*@
+           <select asp-for="Answers.Role" asp-items="@(new SelectList(Model.Teams,"Value","TeamName"))" class="form-select">
+    <option selected disabled value="food">Choose your Team or Area of Work</option>
+     
            </select>
             <span asp-validation-for="Answers.Role" class="text-danger"></span>
             </div> <br />   
+          <br />  
+           <button type="submit" class="btn btn-warning" style="width:180px;">
+            <i class="bi bi-boombox">&nbsp;&nbsp;</i>Submit</button>
 
 
-@foreach (var category in Model.QuestionsByCategory)
+</form>
+
+@*@foreach (var category in Model.QuestionsByCategory)
 {
 
     <h1 style="color:aqua;font-family:Consolas;"> @category.Key </h1>
     @foreach (var question in category.OrderBy(q => q.DisplayOrder))
-    {
-        var radioGroupName = $"Q_{question.Id}";
+    {*@
+ @*       var radioGroupName = $"Q_{question.Id}";
         <fieldset class="ml-3 form-group">
             <legend class="text-success">@question.DisplayOrder : @question.Question </legend>
             <div class="form-check form-check-inline">      
@@ -69,17 +64,17 @@
                 <input type="radio" name="@radioGroupName" class="form-check-input" value="5">
                 <label style="color:yellow" id="@(radioGroupName)5">5</label>
             </div>
-            <div>
+            <div>*@
+@*                   <fieldset class="ml-3 form-group">
+                <div>
+            
                 <input hidden name="Answers.User">
                 <input hidden name="Answers.Role">
+               
             </div>
             <br />
         </fieldset>
-    }
-}
-<br />  
- <button type="submit" class="btn btn-warning" style="width:180px;">
-            <i class="bi bi-boombox">&nbsp;&nbsp;</i>Submit</button>
+    }*@
+@*}*@
 
-</form>
 

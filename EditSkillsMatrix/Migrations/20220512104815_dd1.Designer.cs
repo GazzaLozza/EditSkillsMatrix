@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EditSkillsMatrix.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220512104815_dd1")]
+    partial class dd1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,16 +174,19 @@ namespace EditSkillsMatrix.Migrations
 
             modelBuilder.Entity("Models.AnswerModel", b =>
                 {
-                    b.Property<int?>("ID")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("ID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<int?>("Answer")
+                    b.Property<int>("Answer")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Question")
+                    b.Property<int>("Order")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Question")
                         .HasColumnType("int");
 
                     b.Property<string>("Role")
@@ -208,15 +213,12 @@ namespace EditSkillsMatrix.Migrations
                     b.Property<string>("Genre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ValuetoDB")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Qtypedb");
                 });
 
-            modelBuilder.Entity("Models.TeamMod", b =>
+            modelBuilder.Entity("Models.Team", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -224,7 +226,7 @@ namespace EditSkillsMatrix.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("TeamModId")
+                    b.Property<int?>("TeamId")
                         .HasColumnType("int");
 
                     b.Property<string>("TeamName")
@@ -237,19 +239,19 @@ namespace EditSkillsMatrix.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeamModId");
+                    b.HasIndex("TeamId");
 
-                    b.ToTable("Teams");
+                    b.ToTable("Team");
                 });
 
-            modelBuilder.Entity("Models.TeamMod", b =>
+            modelBuilder.Entity("Models.Team", b =>
                 {
-                    b.HasOne("Models.TeamMod", null)
+                    b.HasOne("Models.Team", null)
                         .WithMany("Teams")
-                        .HasForeignKey("TeamModId");
+                        .HasForeignKey("TeamId");
                 });
 
-            modelBuilder.Entity("Models.TeamMod", b =>
+            modelBuilder.Entity("Models.Team", b =>
                 {
                     b.Navigation("Teams");
                 });

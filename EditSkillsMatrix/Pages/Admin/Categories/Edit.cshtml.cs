@@ -4,6 +4,7 @@ using EditSkillsMatrix.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace EditSkillsMatrix.Pages.Admin.Categories
@@ -21,10 +22,13 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         public Category Category { get; set; }
         [BindProperty]
         public List<SubjectModel> Subs { get; set; }
-
-
+        public IEnumerable<QtypeMod> QtypeModList { get; set; }
+        public IEnumerable<TeamMod> TeamsList { get; set; }
+        
+      
         public void OnGet(int ID)
         {
+            
             Category = _db.Category.Find(ID);
             Subs = _db.Subjects.Select(a =>
                                    new SubjectModel
@@ -33,11 +37,17 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                                        Subjects = a.Subjects
                                    }).ToList();
 
+            TeamsList = _db.Teams.ToList();
+            QtypeModList = _db.Qtypedb.ToList();
+
+
         }
+      
 
 
 
         
+
         public async Task<IActionResult> OnPost()
         {
             //if (Category.Question == Category.Question.ToString())

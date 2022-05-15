@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
-namespace EditSkillsMatrix.Pages.TeamAdd
+namespace EditSkillsMatrix.Pages.QType
 {
     public class DeleteModel : PageModel
     {
@@ -19,40 +19,40 @@ namespace EditSkillsMatrix.Pages.TeamAdd
         }
 
         [BindProperty]
-      public TeamMod Teams { get; set; }
+      public QtypeMod QtypeMod { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Teams == null)
+            if (id == null || _context.Qtypedb == null)
             {
                 return NotFound();
             }
 
-            var team = await _context.Teams.FirstOrDefaultAsync(m => m.Id == id);
+            var qtypemod = await _context.Qtypedb.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (team == null)
+            if (qtypemod == null)
             {
                 return NotFound();
             }
             else 
             {
-                Teams = team;
+                QtypeMod = qtypemod;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Teams == null)
+            if (id == null || _context.Qtypedb == null)
             {
                 return NotFound();
             }
-            var team = await _context.Teams.FindAsync(id);
+            var qtypemod = await _context.Qtypedb.FindAsync(id);
 
-            if (team != null)
+            if (qtypemod != null)
             {
-                Teams = team;
-                _context.Teams.Remove(Teams);
+                QtypeMod = qtypemod;
+                _context.Qtypedb.Remove(QtypeMod);
                 await _context.SaveChangesAsync();
             }
 

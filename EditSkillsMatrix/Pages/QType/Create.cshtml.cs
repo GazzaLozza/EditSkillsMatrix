@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Models;
 
-namespace EditSkillsMatrix.Pages.TeamAdd
+namespace EditSkillsMatrix.Pages.QType
 {
     public class CreateModel : PageModel
     {
@@ -24,7 +24,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
         }
 
         [BindProperty]
-        public TeamMod Teams { get; set; }
+        public QtypeMod QtypeMod { get; set; }
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -35,7 +35,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
                 return Page();
             }
 
-            _context.Teams.Add(Teams);
+            _context.Qtypedb.Add(QtypeMod);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

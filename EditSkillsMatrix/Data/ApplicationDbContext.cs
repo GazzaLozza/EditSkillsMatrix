@@ -14,12 +14,12 @@ public class ApplicationDbContext : DbContext
     }
 
 
-
-    public DbSet<Team> Team { get; set; }
+    public DbSet<QtypeMod> Qtypedb { get; set; }
+    public DbSet<TeamMod> Teams { get; set; }
     public DbSet<Booking> Bookings { get; set; }
     public DbSet<Category> Category { get; set; }
 
-    public DbSet<Team> Teams { get; set; }
+
     public DbSet<SubjectModel> Subjects { get; set; }
     public DbSet<Category2> Category2 { get; set; }
     public DbSet<AnswerModel> Answers { get; set; }
@@ -38,4 +38,8 @@ public class ApplicationDbContext : DbContext
             action.IsTemporal();
         });
     }
+
+
+
+
 }

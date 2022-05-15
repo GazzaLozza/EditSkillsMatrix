@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Models;
 
 namespace EditSkillsMatrix.Pages.Admin.Categories
 {
@@ -17,13 +19,16 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         }
         [BindProperty]
         public Category Category { get; set; }
-     
-    
-        public void OnGet()
+        public IEnumerable<QtypeMod> QtypeModList { get; set; }
+        public IEnumerable<TeamMod> TeamsList { get; set; }
+        public async Task OnGet()
         {
-           
-                }
-     
+            if (_db.Qtypedb != null)
+            {
+                TeamsList = await _db.Teams.ToListAsync();
+                QtypeModList = await _db.Qtypedb.ToListAsync();
+            }
+        }
 
             public async Task<IActionResult> OnPost()
         {

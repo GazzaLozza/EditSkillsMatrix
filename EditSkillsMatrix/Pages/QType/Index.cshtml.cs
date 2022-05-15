@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
-namespace EditSkillsMatrix.Pages.TeamAdd
+namespace EditSkillsMatrix.Pages.QType
 {
     public class IndexModel : PageModel
     {
@@ -18,13 +18,16 @@ namespace EditSkillsMatrix.Pages.TeamAdd
             _context = context;
         }
 
-        public IList<TeamMod> Teams { get;set; } = default!;
+        public IList<QtypeMod> QtypeMod { get;set; } = default!;
+
+        public IEnumerable<QtypeMod> QtypeModList { get;set; }
 
         public async Task OnGetAsync()
         {
-            if (_context.Teams != null)
+            if (_context.Qtypedb != null)
             {
-                Teams = await _context.Teams.ToListAsync();
+                QtypeMod = await _context.Qtypedb.ToListAsync();
+                QtypeModList = await _context.Qtypedb.ToListAsync();
             }
         }
     }

@@ -1,0 +1,39 @@
+﻿@page
+@model EditSkillsMatrix.Pages.QType.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create a new Question Type</h1>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="QtypeMod.Genre" class="control-label"></label>
+                <input asp-for="QtypeMod.Genre" class="form-control" placeholder="New Question Category" />
+                <span asp-validation-for="QtypeMod.Genre" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <br />
+                     <button type="submit" class="btn btn-warning" style="width:180px;">
+            <i class="bi bi-boombox">&nbsp;&nbsp;</i>Create</button>
+            </div>
+
+           
+        </form>
+    </div>
+</div>
+
+<div><br />
+    <a asp-page="Index" class="btn btn-secondary" style="float: left;">
+                 <i class="bi bi-back">  </i>Back<i class="bi bi-clipboard2-pulse-fill"></i></a>
+</div>
+ 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

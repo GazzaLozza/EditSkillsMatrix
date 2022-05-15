@@ -23,16 +23,16 @@
          <div class="mb-3"> 
             <label asp-for="Category.Skill">Question Area</label>
                  <div class="col-9"> 
-           <select asp-for="Category.Skill" class="form-select " placeholder="Enter Category Name">
+           <select asp-for="Category.Skill" asp-items="@(new SelectList(Model.QtypeModList,"Genre","Genre"))" class="form-select">
              
              <option selected disabled value="">Choose Area or Skill...</option>
-               <option value="Agile">Agile Methodology</option>
+            @*   <option value="Agile">Agile Methodology</option>
                <option value="Azure">Azure Applications</option>
                <option value="Code">Code and Coding Languages</option>
                <option value="Microsoft">Microsoft Applications</option>
                <option value="Testing">Testing</option>
               <option value="Web">Web & Cloud</option>
-              <option value="Adhoc">Adhoc Questions currently unassigned to a group</option>
+              <option value="Adhoc">Adhoc Questions currently unassigned to a group</option>*@
             </select>
             <span asp-validation-for="Category.Skill" class="text-danger"></span>
                 
@@ -41,9 +41,9 @@
         <div class="mb-3"> 
 <label asp-for="Category.Skill">Choose the Team who will see this question</label>               
 <div class="col-9"> 
-              <select asp-for="Category.Team" class="form-select " placeholder="Enter Team who will see this question">
+              <select asp-for="Category.Team" asp-items="@(new SelectList(Model.TeamsList,"Value","TeamName"))" class="form-select">
                <option selected disabled value="">Who is this for?...</option>
-               <option value="Data Science">Data Scientist</option>
+      @*         <option value="Data Science">Data Scientist</option>
                <option value="Engineer">Data Engineer</option>
                <option value="People">People</option>
                <option value="QA DM">QA and Data Management</option>
@@ -52,7 +52,7 @@
                <option value="Strategy">Strategic Consulting</option>
                <option value="Growth">Growth</option>
                <option value="Client Services">Client Services</option>
-               <option value="Finance">Finance</option>
+               <option value="Finance">Finance</option>*@
            </select>
             <span asp-validation-for="Category.Team" class="text-danger"></span>
         </div>

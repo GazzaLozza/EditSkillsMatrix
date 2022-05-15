@@ -15,10 +15,10 @@
   
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Team[0].TeamName)
+                @Html.DisplayNameFor(model => model.Teams[0].TeamName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Team[0].Value)
+                @Html.DisplayNameFor(model => model.Teams[0].Value)
             </th>
             </th>
                    <th style="text-align:center">
@@ -27,7 +27,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Team) {
+@foreach (var item in Model.Teams) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.TeamName)

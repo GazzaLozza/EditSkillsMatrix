@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
-namespace EditSkillsMatrix.Pages.TeamAdd
+namespace EditSkillsMatrix.Pages.QType
 {
     public class EditModel : PageModel
     {
@@ -20,21 +20,21 @@ namespace EditSkillsMatrix.Pages.TeamAdd
         }
 
         [BindProperty]
-        public TeamMod Teams { get; set; } = default!;
+        public QtypeMod QtypeMod { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Teams == null)
+            if (id == null || _context.Qtypedb == null)
             {
                 return NotFound();
             }
 
-            var team =  await _context.Teams.FirstOrDefaultAsync(m => m.Id == id);
-            if (team == null)
+            var qtypemod =  await _context.Qtypedb.FirstOrDefaultAsync(m => m.Id == id);
+            if (qtypemod == null)
             {
                 return NotFound();
             }
-            Teams = team;
+            QtypeMod = qtypemod;
             return Page();
         }
 
@@ -47,7 +47,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
                 return Page();
             }
 
-            _context.Attach(Teams).State = EntityState.Modified;
+            _context.Attach(QtypeMod).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +55,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TeamExists(Teams.Id))
+                if (!QtypeModExists(QtypeMod.Id))
                 {
                     return NotFound();
                 }
@@ -68,9 +68,9 @@ namespace EditSkillsMatrix.Pages.TeamAdd
             return RedirectToPage("./Index");
         }
 
-        private bool TeamExists(int id)
+        private bool QtypeModExists(int id)
         {
-          return _context.Teams.Any(e => e.Id == id);
+          return _context.Qtypedb.Any(e => e.Id == id);
         }
     }
 }

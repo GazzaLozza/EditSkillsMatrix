@@ -1,25 +1,18 @@
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-
-
 using EditSkillsMatrix.Models;
 using Models;
-using System.Web.Mvc;
-using ActionResult = System.Web.Mvc.ActionResult;
+using Microsoft.EntityFrameworkCore;
 
-namespace EditSkillsMatrix.Pages.Questions
+namespace EditSkillsMatrix.Pages.Admin.Categories
 {
-    
     [BindProperties]
-    public class QuestionsModel : PageModel
+    public class LoginModel : PageModel
     {
-        
         private readonly ApplicationDbContext _db;
 
 
-        public QuestionsModel(ApplicationDbContext db)
+        public LoginModel(ApplicationDbContext db)
         {
             _db = db;
         }
@@ -27,30 +20,30 @@ namespace EditSkillsMatrix.Pages.Questions
         //These lists are pulled out of the Categpory table and displayed as Questions in the Questions Page
         public IGrouping<string, Category>[] QuestionsByCategory { get; private set; }
         public IEnumerable<TeamMod> Teams { get; set; }
-       
-        
-     
+
+
+
 
         //Pulling the Lists and using lambda to organise them into an order, as per the table they are coming from
         public async Task OnGet()
         {
-           
+
             await InitialiseModel();
-          
+
         }
 
         private async Task InitialiseModel()
         {
             QuestionsByCategory = (await _db.Category.ToArrayAsync()).GroupBy(category => category.Skill).ToArray();
             Teams = _db.Teams.ToList();
-           
+
         }
 
-     
+
         [BindProperty]
         public AnswerModel Answers { get; set; }
-        
-       
+
+
         public async Task<IActionResult> OnPostAsync()
         {
 
@@ -82,19 +75,10 @@ namespace EditSkillsMatrix.Pages.Questions
                 });
             }
             _db.Answers.Add(Answers);
-            TempData["info"] = "Thanks you for completing the Skills Matrix!";
+            //TempData["info"] = "Thanks you for completing the Skills Matrix!";
             await _db.SaveChangesAsync();
-
-            return RedirectToPage("/Reports/Reports");
+            return RedirectToPage("Login2", new { ID = Answers.ID });
         }
-
-
-
     }
 }
-
-
-
-
-
 
