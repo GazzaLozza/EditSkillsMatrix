@@ -32,8 +32,15 @@ namespace EditSkillsMatrix.Models
         public int? DisplayOrder { get; set; }
         public string? User { get; set; }
         public string? Role { get; set; }
+        public DateTime DTime { get; set; }
 
-        
+        public Category()
+        {
+            this.DTime = DateTime.UtcNow;
+
+        }
+
+
     }
     
 

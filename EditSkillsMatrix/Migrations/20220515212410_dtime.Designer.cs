@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EditSkillsMatrix.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220515212410_dtime")]
+    partial class dtime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +81,6 @@ namespace EditSkillsMatrix.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<int?>("DisplayOrder")
                         .HasColumnType("int");
@@ -163,9 +162,6 @@ namespace EditSkillsMatrix.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                    b.Property<DateTime>("DTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Subjects")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -186,9 +182,6 @@ namespace EditSkillsMatrix.Migrations
 
                     b.Property<int>("Answer")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("DTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("Question")
                         .HasColumnType("int");
@@ -214,9 +207,6 @@ namespace EditSkillsMatrix.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("DTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Genre")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -238,7 +228,7 @@ namespace EditSkillsMatrix.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("DTime")
+                    b.Property<DateTime>("MyDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("TeamModId")

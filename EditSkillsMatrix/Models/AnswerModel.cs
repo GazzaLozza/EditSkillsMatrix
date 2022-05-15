@@ -27,7 +27,13 @@ namespace Models
         [Required(ErrorMessage = "Please choose a team or nearest area")]
         public string Role { get; set; }
 
-    
+        public DateTime DTime { get; set; }
+
+        public AnswerModel()
+        {
+            this.DTime = DateTime.UtcNow;
+
+        }
 
 
     }

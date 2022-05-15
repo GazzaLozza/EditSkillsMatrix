@@ -19,7 +19,15 @@ namespace EditSkillsMatrix.Models
         [Required]
         [MaxLength(100)]
         public string Subjects { get; set; }
-        
+        public DateTime DTime { get; set; }
+
+        public SubjectModel()
+        {
+            this.DTime = DateTime.UtcNow;
+
+        }
+
+
     }
-     
+
 }

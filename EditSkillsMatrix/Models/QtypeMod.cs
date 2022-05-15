@@ -23,6 +23,16 @@ namespace Models
         public string ValuetoDB { get; set; }
 
 
+        public DateTime DTime { get; set; }
+
+        public QtypeMod()
+        {
+            this.DTime = DateTime.UtcNow;
+
+        }
+
+
+
 
     }
 }

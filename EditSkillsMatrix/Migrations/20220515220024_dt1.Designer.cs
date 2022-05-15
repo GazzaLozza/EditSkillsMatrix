@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EditSkillsMatrix.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220515220024_dt1")]
+    partial class dt1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +81,6 @@ namespace EditSkillsMatrix.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<int?>("DisplayOrder")
                         .HasColumnType("int");
@@ -187,9 +186,6 @@ namespace EditSkillsMatrix.Migrations
                     b.Property<int>("Answer")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("DTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("Question")
                         .HasColumnType("int");
 
@@ -213,9 +209,6 @@ namespace EditSkillsMatrix.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Genre")
                         .HasMaxLength(100)

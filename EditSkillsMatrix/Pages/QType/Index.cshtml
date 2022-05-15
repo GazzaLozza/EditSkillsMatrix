@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Create A New Question Category Type</h1>
+<h1 style="color:HighlightText; color:lawngreen;font-family:Consolas">Create A New Question Category Type</h1>
 
 <p>
     <a asp-page="Create" class="btn btn-success mx-2">Create New Category Type   <i class="bi bi-clipboard2-pulse-fill"></i></a>
@@ -23,7 +23,7 @@
                 </th>
         </tr>
     </thead>
-    <tbody>
+    <tbody style="font-size:18px">
 @foreach (var item in Model.QtypeMod) {
         <tr>
             <td>
