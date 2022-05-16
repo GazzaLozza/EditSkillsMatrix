@@ -31,8 +31,8 @@ namespace EditSkillsMatrix.Models
         [Range(1, 250)]
         [Display(Name ="Display Order")]
         public int? DisplayOrder { get; set; }
-        public string? User { get; set; }
-        public string? Role { get; set; }
+        //public string? User { get; set; }
+        //public string? Role { get; set; }
         public DateTime DTime { get; set; }
 
         public Category()
