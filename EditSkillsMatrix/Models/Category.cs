@@ -20,6 +20,7 @@ namespace EditSkillsMatrix.Models
         [Required]
         [MaxLength(100, ErrorMessage = "Too Long, try shortening the name to under 100 characters")]
         public string? Skill { get; set; }
+        public string ValuetoDB { get; set; }
 
         public bool? Option1 { get; set; }
 

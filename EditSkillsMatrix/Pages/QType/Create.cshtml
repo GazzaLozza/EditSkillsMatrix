@@ -19,7 +19,12 @@
                 <span asp-validation-for="QtypeMod.Genre" class="text-danger"></span>
             </div>
              <div class="form-group">
-                <br />
+                <label asp-for="QtypeMod.ValuetoDB" class="control-label"></label>
+                <input asp-for="QtypeMod.ValuetoDB" class="form-control" placeholder="New Question Category" />
+                <span asp-validation-for="QtypeMod.ValuetoDB" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <br /><br />
                      <button type="submit" class="btn btn-warning" style="width:180px;">
             <i class="bi bi-boombox">&nbsp;&nbsp;</i>Create</button>
             </div>

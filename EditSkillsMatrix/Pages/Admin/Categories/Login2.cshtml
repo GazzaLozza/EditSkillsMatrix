@@ -1,17 +1,23 @@
 ﻿@page
 @model EditSkillsMatrix.Pages.Admin.Categories.Login2Model
 @{
+        ViewData["Title"] = "Matrix Questions";
     Layout = "~/Pages/Shared/_Layout.cshtml";
+
 }
 <form method="post">
    @* <input hidden asp-for="Answers.ID" />*@
     
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h1 style="color:peachpuff;font-family:Consolas;">Hi @Model.Answers.User, welcome to your Skills Matrix Questions</h1>
+            <h1 style="color:peachpuff;font-family:Consolas;">Hi @Model.Answers.User!! Welcome to your Skills Matrix Questions</h1>
             <hr />
             </div>
         </div>
+        <br />  
+
+<p class="text-warning" style="font-family:Consolas"><b>Radio Button Key: </b> <br />1 is the lowest score, and 5 is the highest rated / score</p>
+<br />  
         <div asp-validation-summary=All class=text text-warning></div>
         <div class="mb-3"> 
             @*<label asp-for="Answers.User"></label>*@

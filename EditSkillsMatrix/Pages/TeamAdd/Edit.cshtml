@@ -5,7 +5,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1 style="color:HighlightText; color:lawngreen;font-family:Consolas">Edit</h1>
 
 <h4>Team</h4>
 <hr />
@@ -26,14 +26,14 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <input type="submit" class="btn btn-primary"/>
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index" class="btn btn-warning"><i class="bi bi-lightning">  </i>Back to List</a>
 </div>
 
 @section Scripts {

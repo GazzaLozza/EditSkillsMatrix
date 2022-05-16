@@ -24,7 +24,7 @@
         <div class="mb-3"> 
             <label asp-for="Category.Skill">Question Category</label>
                  <div class="col-9"> 
-             <select asp-for="Category.Skill" asp-items="@(new SelectList(Model.QtypeModList,"Genre","Genre"))" class="form-select">
+             <select asp-for="Category.Skill" asp-items="@(new SelectList(Model.QtypeModList,"ValuetoDB","Genre"))" class="form-select">
              
              <option selected disabled value="">Choose...</option>
              @*  <option value="Agile">Agile Methodology</option>
