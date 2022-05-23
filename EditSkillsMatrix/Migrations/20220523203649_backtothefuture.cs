@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EditSkillsMatrix.Migrations
 {
-    public partial class New2 : Migration
+    public partial class backtothefuture : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,68 +15,68 @@ namespace EditSkillsMatrix.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Order = table.Column<int>(type: "int", nullable: false),
                     Question = table.Column<int>(type: "int", nullable: false),
                     Answer = table.Column<int>(type: "int", nullable: false),
                     User = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Answers", x => x.ID);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Bookings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MyDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Activity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Details = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Time = table.Column<int>(type: "int", nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
-                    PeriodEnd = table.Column<DateTime>(type: "datetime2", nullable: false)
-                        .Annotation("SqlServer:IsTemporal", true)
-                        .Annotation("SqlServer:TemporalPeriodEndColumnName", "PeriodEnd")
-                        .Annotation("SqlServer:TemporalPeriodStartColumnName", "PeriodStart"),
-                    PeriodStart = table.Column<DateTime>(type: "datetime2", nullable: false)
-                        .Annotation("SqlServer:IsTemporal", true)
-                        .Annotation("SqlServer:TemporalPeriodEndColumnName", "PeriodEnd")
-                        .Annotation("SqlServer:TemporalPeriodStartColumnName", "PeriodStart")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bookings", x => x.Id);
-                })
-                .Annotation("SqlServer:IsTemporal", true)
-                .Annotation("SqlServer:TemporalHistoryTableName", "BookingsHistory")
-                .Annotation("SqlServer:TemporalHistoryTableSchema", null)
-                .Annotation("SqlServer:TemporalPeriodEndColumnName", "PeriodEnd")
-                .Annotation("SqlServer:TemporalPeriodStartColumnName", "PeriodStart");
+            //migrationBuilder.CreateTable(
+            //    name: "Bookings",
+            //    columns: table => new
+            //    {
+            //        Id = table.Column<int>(type: "int", nullable: false)
+            //            .Annotation("SqlServer:Identity", "1, 1"),
+            //        MyDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+            //        Activity = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Details = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            //        Time = table.Column<int>(type: "int", nullable: false),
+            //        Rating = table.Column<int>(type: "int", nullable: false),
+            //        PeriodEnd = table.Column<DateTime>(type: "datetime2", nullable: false)
+            //            .Annotation("SqlServer:IsTemporal", true)
+            //            .Annotation("SqlServer:TemporalPeriodEndColumnName", "PeriodEnd")
+            //            .Annotation("SqlServer:TemporalPeriodStartColumnName", "PeriodStart"),
+            //        PeriodStart = table.Column<DateTime>(type: "datetime2", nullable: false)
+            //            .Annotation("SqlServer:IsTemporal", true)
+            //            .Annotation("SqlServer:TemporalPeriodEndColumnName", "PeriodEnd")
+            //            .Annotation("SqlServer:TemporalPeriodStartColumnName", "PeriodStart")
+            //    },
+            //    constraints: table =>
+            //    {
+            //        table.PrimaryKey("PK_Bookings", x => x.Id);
+            //    })
+            //    .Annotation("SqlServer:IsTemporal", true)
+            //    .Annotation("SqlServer:TemporalHistoryTableName", "BookingsHistory")
+            //    .Annotation("SqlServer:TemporalHistoryTableSchema", null)
+            //    .Annotation("SqlServer:TemporalPeriodEndColumnName", "PeriodEnd")
+            //    .Annotation("SqlServer:TemporalPeriodStartColumnName", "PeriodStart");
 
             migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Team = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Question = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Skill = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Option1 = table.Column<bool>(type: "bit", nullable: false),
-                    Option2 = table.Column<bool>(type: "bit", nullable: false),
-                    Option3 = table.Column<bool>(type: "bit", nullable: false),
-                    Option4 = table.Column<bool>(type: "bit", nullable: false),
-                    Option5 = table.Column<bool>(type: "bit", nullable: false),
-                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
-                    User = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    ValuetoDB = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Option1 = table.Column<bool>(type: "bit", nullable: true),
+                    Option2 = table.Column<bool>(type: "bit", nullable: true),
+                    Option3 = table.Column<bool>(type: "bit", nullable: true),
+                    Option4 = table.Column<bool>(type: "bit", nullable: true),
+                    Option5 = table.Column<bool>(type: "bit", nullable: true),
+                    DisplayOrder = table.Column<int>(type: "int", nullable: true),
+                    DTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.ID);
+                    table.PrimaryKey("PK_Category", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -97,17 +97,18 @@ namespace EditSkillsMatrix.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Qtype",
+                name: "Qtypedb",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Remove = table.Column<bool>(type: "bit", nullable: false)
+                    Genre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    ValuetoDB = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    DTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Qtype", x => x.Id);
+                    table.PrimaryKey("PK_Qtypedb", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,7 +117,8 @@ namespace EditSkillsMatrix.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Subjects = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    Subjects = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    DTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -124,29 +126,30 @@ namespace EditSkillsMatrix.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Team",
+                name: "Teams",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TeamName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TeamId = table.Column<int>(type: "int", nullable: true)
+                    TeamName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    Value = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
+                    DTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TeamModId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Team", x => x.Id);
+                    table.PrimaryKey("PK_Teams", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Team_Team_TeamId",
-                        column: x => x.TeamId,
-                        principalTable: "Team",
+                        name: "FK_Teams_Teams_TeamModId",
+                        column: x => x.TeamModId,
+                        principalTable: "Teams",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Team_TeamId",
-                table: "Team",
-                column: "TeamId");
+                name: "IX_Teams_TeamModId",
+                table: "Teams",
+                column: "TeamModId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -169,13 +172,13 @@ namespace EditSkillsMatrix.Migrations
                 name: "Category2");
 
             migrationBuilder.DropTable(
-                name: "Qtype");
+                name: "Qtypedb");
 
             migrationBuilder.DropTable(
                 name: "Subjects");
 
             migrationBuilder.DropTable(
-                name: "Team");
+                name: "Teams");
         }
     }
 }

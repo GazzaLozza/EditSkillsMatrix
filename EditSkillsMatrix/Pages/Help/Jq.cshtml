@@ -1,0 +1,41 @@
+﻿@page
+@model EditSkillsMatrix.Pages.Help.JqModel
+@{
+}
+<html>
+<body>
+
+<p>Click the button to display the value of the value attribute of the hidden input field.</p>
+
+<input type="hidden" id="myInput" value="W3Schools">
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput").value;
+  document.getElementById("demo").innerHTML = x;
+}
+</script>
+
+</body>
+</html>
+<form name="ff">
+     <select id="dropdown" name="dropdown" onchange="changeHiddenInput(this)">
+    	<option value="j.hotmail.com">Jens</option>
+    	<option value="a.hotmail.com">Adam</option>
+    	<option value="d.homtail.com">Dan</option>
+    </select>
+
+    <input type="hidden" name="hiddenInput" id="hiddenInput" />
+</form>
+
+ <script type="text/javascript">
+function changeHiddenInput (objDropDown)
+{
+   document.getElementById("hiddenInput").value = objDropDown.value; 
+    alert(document.getElementById("hiddenInput").value);
+}
+ </script>

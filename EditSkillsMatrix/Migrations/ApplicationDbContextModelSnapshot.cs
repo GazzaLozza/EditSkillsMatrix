@@ -106,9 +106,6 @@ namespace EditSkillsMatrix.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Skill")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -118,9 +115,6 @@ namespace EditSkillsMatrix.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("User")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ValuetoDB")
                         .HasColumnType("nvarchar(max)");
