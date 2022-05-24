@@ -96,6 +96,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                 var answer = Request.Form[radioGroupName].FirstOrDefault();
                 var user = Request.Form["Answers.User"];
                 var role = Request.Form["Answers.Role"];
+                var rol = "Bums";
 
 
                 if (answer == null) continue;
@@ -105,7 +106,8 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                     Question = question.Id,
                     Answer = int.Parse(answer), // int from 1 - 5
                     User = user,
-                    Role = role
+                    Role = role,
+                    Rep = rol
 
                 });
             }

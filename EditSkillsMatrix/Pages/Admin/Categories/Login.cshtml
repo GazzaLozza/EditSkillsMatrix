@@ -23,11 +23,12 @@
                     <label asp-for="Answers.Role">Choose your Team or Area (required)</label>
                     </div> 
                  <div class="col-9"> 
-           <select asp-for="Answers.Role" asp-items="@(new SelectList(Model.Teams,"Value","TeamName"))" class="form-select">
-    <option selected disabled value="food">Choose your Team or Area of Work</option>
+           <select asp-for="Answers.Role" asp-items="@(new SelectList(Model.Teams,"TeamName","Value"))" class="form-select">
+    <option selected disabled value="">Choose your Team or Area of Work</option>
      
            </select>
             <span asp-validation-for="Answers.Role" class="text-danger"></span>
+            <input hidden asp-for="Answers.Rep" />
             </div> <br />   
           <br />  
            <button type="submit" class="btn btn-warning" style="width:180px;">
@@ -36,46 +37,5 @@
 
 </form>
 
-@*@foreach (var category in Model.QuestionsByCategory)
-{
-
-    <h1 style="color:aqua;font-family:Consolas;"> @category.Key </h1>
-    @foreach (var question in category.OrderBy(q => q.DisplayOrder))
-    {*@
- @*       var radioGroupName = $"Q_{question.Id}";
-        <fieldset class="ml-3 form-group">
-            <legend class="text-success">@question.DisplayOrder : @question.Question </legend>
-            <div class="form-check form-check-inline">      
-                <input type="radio" name="@radioGroupName" class="form-check-input"  value="1">
-                <label style="color:yellow" id="@(radioGroupName)_1">1</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input type="radio" name="@radioGroupName" class="form-check-input"  value="2">
-                <label style="color:yellow" id="@(radioGroupName)2">2</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input type="radio" name="@radioGroupName" class="form-check-input"  value="3">
-                <label style="color:yellow"  id="@(radioGroupName)3">3</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input type="radio" name="@radioGroupName" class="form-check-input"  value="4">
-                <label style="color:yellow" id="@(radioGroupName)4">4</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input type="radio" name="@radioGroupName" class="form-check-input" value="5">
-                <label style="color:yellow" id="@(radioGroupName)5">5</label>
-            </div>
-            <div>*@
-@*                   <fieldset class="ml-3 form-group">
-                <div>
-            
-                <input hidden name="Answers.User">
-                <input hidden name="Answers.Role">
-               
-            </div>
-            <br />
-        </fieldset>
-    }*@
-@*}*@
 
 

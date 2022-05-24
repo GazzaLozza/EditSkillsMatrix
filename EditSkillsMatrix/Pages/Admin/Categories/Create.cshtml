@@ -34,12 +34,13 @@
         <div class="mb-3"> 
 <label asp-for="Category.Skill">Choose the Team who will see this question</label>               
 <div class="col-9"> 
-              <select asp-for="Category.Team" asp-items="@(new SelectList(Model.TeamsList,"Value","TeamName"))" class="form-select">
+              <select asp-for="Category.Team" asp-items="@(new SelectList(Model.TeamsList,"TeamName","Value"))" class="form-select">
                <option selected disabled value="">Who is this for?...</option>
            </select>
             <span asp-validation-for="Category.Team" class="text-danger"></span>
         </div>
  </div>
+ <input hidden asp-for="Category.ValuetoDB" />
            <div class="mb-3">
             <label asp-for="Category.DisplayOrder"></label>
             <div class="col-3">

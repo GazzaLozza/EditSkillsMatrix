@@ -19,7 +19,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         [BindProperty]
         //These lists are pulled out of the Categpory table and displayed as Questions in the Questions Page
         public IGrouping<string, Category>[] QuestionsByCategory { get; private set; }
-        public IEnumerable<TeamMod> Teams { get; set; }
+
 
 
 
@@ -35,16 +35,16 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         private async Task InitialiseModel()
         {
             QuestionsByCategory = (await _db.Category.ToArrayAsync()).GroupBy(category => category.Skill).ToArray();
-            Teams = _db.Teams.ToList();
-
+            Teams = _db.Teams.ToList().OrderBy(t1 => t1.TeamName);
         }
 
 
         [BindProperty]
         public AnswerModel Answers { get; set; }
+        [BindProperty]
+        public IEnumerable<TeamMod> Teams { get; set; }
 
-
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? Id)
         {
 
             if (!ModelState.IsValid)
@@ -54,7 +54,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
             }
 
             var questions = await _db.Category.ToArrayAsync();
-
+           
 
             foreach (var question in questions)
             {
@@ -62,6 +62,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                 var answer = Request.Form[radioGroupName].FirstOrDefault();
                 var user = Request.Form["Answers.User"];
                 var role = Request.Form["Answers.Role"];
+             
 
                 if (answer == null) continue;
 
@@ -71,6 +72,8 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                     Answer = int.Parse(answer), // int from 1 - 5
                     User = user,
                     Role = role
+                    
+
 
                 });
             }
