@@ -27,7 +27,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         public async Task OnGetAsync(string sortOrder, string searchString)
         {
             // using System;
-
+            _db.Category.FromSqlRaw("exec TeamName");
             OrderSort = sortOrder == "datedesc" ? "datedesc" : "dates";
             QuestSort = sortOrder == "names" ? "names" : "namedesc";
             OrderSort1 = sortOrder == "datedesc" ? "datedesc" : "namedesc";
@@ -40,33 +40,33 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                Sorted = Sorted.Where(s => s.Team.Contains(searchString) || s.Question.Contains(searchString));
+                Sorted = Sorted.Where(s => s.TeamName.Contains(searchString) || s.Question.Contains(searchString) || s.Skill.Contains(searchString));
                                        
             }
 
             switch (sortOrder)
             {
-                case "namedesc":
-                    Sorted = Sorted.OrderBy(s => s.Skill).ThenBy(s => s.DisplayOrder);
-                    break;
-                case "names":
-                    Sorted = Sorted.OrderBy(s => s.DisplayOrder);
-                    break;
-                case "team":
-                    Sorted = Sorted.OrderBy(s => s.Team).ThenBy(s => s.Skill).ThenBy(s => s.DisplayOrder); ;
-                    break;
+                //case "namedesc":
+                //    Sorted = Sorted.OrderBy(s => s.Skill).ThenBy(s => s.DisplayOrder);
+                //    break;
+                //case "names":
+                //    Sorted = Sorted.OrderBy(s => s.DisplayOrder);
+                //    break;
+                //case "team":
+                //    Sorted = Sorted.OrderBy(s => s.TeamName).ThenBy(s => s.Skill).ThenBy(s => s.DisplayOrder); ;
+                //    break;
 
 
 
-                case "datedesc": Sorted = Sorted.OrderBy(s => s.Skill).ThenBy(s => s.DisplayOrder);
-                    break;
-                case "dates":
-                    Sorted = Sorted.OrderByDescending(s => s.DisplayOrder);
-                    break;
+                //case "datedesc": Sorted = Sorted.OrderBy(s => s.Skill).ThenBy(s => s.DisplayOrder);
+                //    break;
+                //case "dates":
+                //    Sorted = Sorted.OrderByDescending(s => s.DisplayOrder);
+                //    break;
 
 
                 default:
-                    Sorted = Sorted.OrderBy(s => s.Team).ThenBy(s => s.Skill).ThenBy(s => s.DisplayOrder); ;
+                    Sorted = Sorted.OrderBy(s => s.TeamName).ThenBy(s => s.Skill).ThenBy(s => s.DisplayOrder).Where(t => t.TeamName != "zZBLANK"); ;
                     break;
 
             };

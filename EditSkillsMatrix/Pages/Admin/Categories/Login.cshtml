@@ -16,19 +16,20 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                <div class="form-group form-group-inline col-9">
                 <label asp-for="Answers.User" class="control-label"></label>
-                <input asp-for="Answers.User" class="form-control" placeholder="Add your Name" />
+                <input asp-for="Answers.User" class="form-control" placeholder="Add your Name Here.  *Tip:- If you share the same name as another in your team, choose a unique name to you" />
                 <span asp-validation-for="Answers.User" class="text-danger"></span>
             </div><br />
             <div class="form-group form-group-inline">
-                    <label asp-for="Answers.Role">Choose your Team or Area (required)</label>
+                    <label asp-for="Answers.TeamName">Choose your Team or Area of Work</label>
                     </div> 
                  <div class="col-9"> 
-           <select asp-for="Answers.Role" asp-items="@(new SelectList(Model.Teams,"TeamName","Value"))" class="form-select">
+           <select asp-for="Answers.TeamName" asp-items="@(new SelectList(Model.Teams,"TeamName","TeamName"))" class="form-select">
     <option selected disabled value="">Choose your Team or Area of Work</option>
      
            </select>
-            <span asp-validation-for="Answers.Role" class="text-danger"></span>
-            <input hidden asp-for="Answers.Rep" />
+            <span asp-validation-for="Answers.TeamName" class="text-danger"></span>
+            <input hidden asp-for="Answers.Value" />
+             <input hidden asp-for="Answers.TeamId" value="@Model.Teams.FirstOrDefault().Id"/>
             </div> <br />   
           <br />  
            <button type="submit" class="btn btn-warning" style="width:180px;">

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EditSkillsMatrix.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220523221646_flump")]
-    partial class flump
+    [Migration("20220526174832_beef")]
+    partial class beef
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,12 +113,15 @@ namespace EditSkillsMatrix.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Team")
+                    b.Property<int?>("TeamId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TeamName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("ValuetoDB")
+                    b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -192,15 +195,18 @@ namespace EditSkillsMatrix.Migrations
                     b.Property<int>("Question")
                         .HasColumnType("int");
 
-                    b.Property<string>("Rep")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Role")
+                    b.Property<string>("TeamName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");

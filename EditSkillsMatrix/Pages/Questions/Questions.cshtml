@@ -19,24 +19,13 @@
                 <span asp-validation-for="Answers.User" class="text-danger"></span>
             </div><br />
             <div class="form-group form-group-inline">
-                    <label asp-for="Answers.Role">Choose your Team or Area (required)</label>
+                    <label asp-for="Answers.TeamName">Choose your Team or Area (required)</label>
                     </div> 
                  <div class="col-9"> 
-           <select id="dd" asp-for="Answers.Role" asp-items="@(new SelectList(Model.Teams,"Value","TeamName"))" class="form-select" onchange="select">
+           <select id="dd" asp-for="Answers.TeamName" asp-items="@(new SelectList(Model.Teams,"Value","TeamName"))" class="form-select" onchange="select">
         <option selected disabled value="food">Choose your Team</option>
-            @*   <option selected disabled value="">Choose your Team</option>
-               <option value="Data Science">Data Scientist</option>
-               <option value="Engineer">Data Engineer</option>
-               <option value="People">People</option>
-               <option value="QA DM">QA and Data Management</option>
-               <option value="Marketing Comms">Marketing Technology & Communications</option>
-               <option value="Join The Dots">Join The Dots</option>
-               <option value="Strategy">Strategic Consulting</option>
-               <option value="Growth">Growth</option>
-               <option value="Client Services">Client Services</option>
-               <option value="Finance">Finance</option>*@
            </select>
-            <span asp-validation-for="Answers.Role" class="text-danger"></span>
+            <span asp-validation-for="Answers.TeamName" class="text-danger"></span>
             </div> <br />   
 
 

@@ -25,8 +25,8 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         {
             if (_db.Qtypedb != null)
             {
-                TeamsList = await _db.Teams.ToListAsync();
-                QtypeModList = await _db.Qtypedb.ToListAsync();
+                TeamsList = await _db.Teams.Where(t => t.TeamName != "zZBLANK").OrderBy(t => t.TeamName).ToListAsync();
+                QtypeModList = await _db.Qtypedb.Where(q => q.Genre != "zZBLANK").OrderBy(q => q.Genre).ToListAsync();
             }
         }
 
@@ -37,12 +37,17 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                 ModelState.AddModelError(string.Empty, "Description and Order Number are the Same!");
             }
 
+        
+
             if (ModelState.IsValid)
             {
                 await _db.Category.AddAsync(Category);
-
+            
                 await _db.SaveChangesAsync();
+                _db.Category.FromSqlRaw("exec TeamName");
                 TempData["success"] = "Entry has been Created!!!";
+            
+
                 return RedirectToPage("/Admin/Categories/Index");
             }
             return Page();

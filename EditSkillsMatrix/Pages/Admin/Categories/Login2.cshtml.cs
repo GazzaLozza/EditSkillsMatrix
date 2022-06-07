@@ -26,7 +26,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         public AnswerModel Answers { get; set; }
         public AnswerModel AnswerL { get; set; }
 
-        public void OnGetSingleOrder(int ID) { }
+        
         public string Coco { get; set; }
 
         //Pulling the Lists and using lambda to organise them into an order, as per the table they are coming from
@@ -50,11 +50,11 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                 Answers = qtypemod;
             }
 
-            var Coco = qtypemod.Role;
+            var Coco = qtypemod.TeamName;
 
             //Teams = _db.Teams.ToList();cate
             //await _db.Answers.ToArrayAsync();
-            QuestionsByCategory = (await _db.Category.ToArrayAsync()).Where(category => category.Team == Coco).OrderBy(category => category.Skill).GroupBy(category => category.Skill).ToArray();
+            QuestionsByCategory = (await _db.Category.ToArrayAsync()).Where(category => category.TeamName == Coco).OrderBy(category => category.Skill).GroupBy(category => category.Skill).ToArray();
             
 
             return Page();
@@ -95,8 +95,9 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                 var radioGroupName = $"Q_{question.Id}";
                 var answer = Request.Form[radioGroupName].FirstOrDefault();
                 var user = Request.Form["Answers.User"];
-                var role = Request.Form["Answers.Role"];
-                var rol = "Bums";
+                var role = Request.Form["Answers.TeamName"];
+                var rol = Request.Form["Answers.Value"];
+            
 
 
                 if (answer == null) continue;
@@ -106,8 +107,10 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                     Question = question.Id,
                     Answer = int.Parse(answer), // int from 1 - 5
                     User = user,
-                    Role = role,
-                    Rep = rol
+                    TeamName = role,
+                    Value = rol
+                    
+                   
 
                 });
             }

@@ -35,7 +35,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         private async Task InitialiseModel()
         {
             QuestionsByCategory = (await _db.Category.ToArrayAsync()).GroupBy(category => category.Skill).ToArray();
-            Teams = _db.Teams.ToList().OrderBy(t1 => t1.TeamName);
+            Teams = _db.Teams.ToList().Where(t1 => t1.TeamName != "zZBLANK").OrderBy(t1 => t1.TeamName);
         }
 
 
@@ -44,7 +44,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         [BindProperty]
         public IEnumerable<TeamMod> Teams { get; set; }
 
-        public async Task<IActionResult> OnPostAsync(int? Id)
+        public async Task<IActionResult> OnPostAsync()
         {
 
             if (!ModelState.IsValid)
@@ -71,7 +71,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                     Question = question.Id,
                     Answer = int.Parse(answer), // int from 1 - 5
                     User = user,
-                    Role = role
+                    TeamName = role
                     
 
 
@@ -80,7 +80,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
             _db.Answers.Add(Answers);
             //TempData["info"] = "Thanks you for completing the Skills Matrix!";
             await _db.SaveChangesAsync();
-            return RedirectToPage("Login2", new { ID = Answers.ID });
+            return RedirectToPage("Login2", new { Answers.ID });
         }
     }
 }

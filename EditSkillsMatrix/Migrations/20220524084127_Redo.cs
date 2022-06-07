@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EditSkillsMatrix.Migrations
 {
-    public partial class backtothefuture : Migration
+    public partial class Redo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +18,9 @@ namespace EditSkillsMatrix.Migrations
                     Question = table.Column<int>(type: "int", nullable: false),
                     Answer = table.Column<int>(type: "int", nullable: false),
                     User = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeamName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TeamId = table.Column<int>(type: "int", nullable: false),
                     DTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -62,10 +64,11 @@ namespace EditSkillsMatrix.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Team = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TeamName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TeamId = table.Column<int>(type: "int", nullable: true),
                     Question = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Skill = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    ValuetoDB = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Option1 = table.Column<bool>(type: "bit", nullable: true),
                     Option2 = table.Column<bool>(type: "bit", nullable: true),
                     Option3 = table.Column<bool>(type: "bit", nullable: true),

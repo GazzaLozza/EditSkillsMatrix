@@ -20,8 +20,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         }
         [BindProperty]
         public Category Category { get; set; }
-        [BindProperty]
-        public List<SubjectModel> Subs { get; set; }
+            
         public IEnumerable<QtypeMod> QtypeModList { get; set; }
         public IEnumerable<TeamMod> TeamsList { get; set; }
         
@@ -30,15 +29,15 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         {
             
             Category = _db.Category.Find(ID);
-            Subs = _db.Subjects.Select(a =>
-                                   new SubjectModel
-                                   {
+            //Subs = _db.Subjects.Select(a =>
+            //                       new SubjectModel
+            //                       {
 
-                                       Subjects = a.Subjects
-                                   }).ToList();
+            //                           Subjects = a.Subjects
+            //                       }).ToList();
 
-            TeamsList = _db.Teams.ToList();
-            QtypeModList = _db.Qtypedb.ToList();
+            TeamsList = _db.Teams.Where(t => t.TeamName != "zZBLANK").ToList();
+            QtypeModList = _db.Qtypedb.Where(p => p.Genre != "zZBLANK").ToList();
 
 
         }
@@ -59,8 +58,11 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
             if (ModelState.IsValid)
             {
                 _db.Category.Update(Category);
+                
                 await _db.SaveChangesAsync();
+             
                 TempData["success"] = "Entry has been Updated!!!";
+               
                 return RedirectToPage("/Admin/Categories/Index");
             }
             return Page();

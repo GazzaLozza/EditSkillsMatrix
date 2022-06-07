@@ -32,22 +32,22 @@
                 
             <tr>
                   <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.Team">
-                    @Html.DisplayNameFor(model => model.Categories[0].Team)
+                   @* <a asp-page="./Index" asp-route-sortOrder="@Model.Team">*@
+                    @Html.DisplayNameFor(model => model.Categories[0].TeamName)
                 </a>
             </th>
                 <th>
-                    <a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort">
+                   @* <a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort">*@
                     @Html.DisplayNameFor(model => model.Categories[0].Question)
                 </a>
             </th>
             <th>
-                 <a asp-page="./Index" asp-items="@Model.QuestSort">
+         @*        <a asp-page="./Index" asp-items="@Model.QuestSort">*@
                 Category
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort1">
+                @*<a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort1">*@
                     @Html.DisplayNameFor(model => model.Categories[0].DisplayOrder)
                 </a>
                 </th>
@@ -62,7 +62,7 @@
 
                  <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => obj.Team)
+                    @Html.DisplayFor(modelItem => obj.TeamName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => obj.Question)

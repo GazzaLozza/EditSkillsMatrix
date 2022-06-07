@@ -25,9 +25,10 @@ namespace Models
   
         [BindProperty]
         [Required(ErrorMessage = "Please choose a team or nearest area")]
-        public string Role { get; set; }
+        public string TeamName { get; set; }
         [BindProperty]
-        public string Rep { get; set; }
+        public string Value { get; set; }
+        public int TeamId { get; set; } 
 
         public DateTime DTime { get; set; }
 

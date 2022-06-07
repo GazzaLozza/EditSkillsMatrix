@@ -24,7 +24,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
         {
             if (_context.Teams != null)
             {
-                Teams = await _context.Teams.ToListAsync();
+                Teams = await _context.Teams.Where(q => q.TeamName != "zZBLANK").ToListAsync();
             }
         }
     }

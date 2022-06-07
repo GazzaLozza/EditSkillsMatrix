@@ -12,12 +12,10 @@ namespace Models
     {
       
         public int Id { get; set; }
-
-   
+           
         [Display(Name = "Team Name")]
         [MaxLength(40)]
         public string TeamName { get; set; }
-
   
         [Display(Name = "Value Passed to DB")]
         [MaxLength(40)]
@@ -27,18 +25,6 @@ namespace Models
 
         public DateTime DTime { get; set; }
 
-        public TeamMod()
-        {
-            this.DTime = DateTime.UtcNow;
-
-        }
-
-
-
-
-
-
-
-
+   
     }
 }

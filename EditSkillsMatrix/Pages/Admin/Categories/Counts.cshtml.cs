@@ -48,7 +48,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                Sorted = Sorted.Where(s => s.Team.Contains(searchString));
+                Sorted = Sorted.Where(s => s.TeamName.Contains(searchString));
 
             }
 
@@ -64,7 +64,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                     Sorted = Sorted.OrderBy(s => s.DisplayOrder);
                     break;
                 case "team":
-                    Sorted = Sorted.OrderBy(s => s.Team).ThenBy(s => s.Skill).ThenBy(s => s.DisplayOrder); ;
+                    Sorted = Sorted.OrderBy(s => s.TeamName).ThenBy(s => s.Skill).ThenBy(s => s.DisplayOrder); ;
                     break;
 
 
@@ -78,7 +78,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
 
 
                 default:
-                    Sorted = Sorted.OrderBy(s => s.Team).ThenBy(s => s.Skill).ThenBy(s => s.DisplayOrder); ;
+                    Sorted = Sorted.OrderBy(s => s.TeamName).ThenBy(s => s.Skill).ThenBy(s => s.DisplayOrder).Where(t => t.TeamName != "zZBLANK"); ;
                     break;
 
             };

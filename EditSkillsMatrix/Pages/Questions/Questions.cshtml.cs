@@ -77,7 +77,7 @@ namespace EditSkillsMatrix.Pages.Questions
                     Question = question.Id,
                     Answer = int.Parse(answer), // int from 1 - 5
                     User = user,
-                    Role = role
+                    TeamName = role
 
                 });
             }

@@ -6,6 +6,8 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 <form method="post">
+
+   @* <input hidden asp-for="TeamsList.Id" />*@
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 style="color:HighlightText; color:lawngreen;font-family:Consolas">Create A New Skills Matrix Question</h2>
@@ -18,7 +20,7 @@
             <div class="col-9"> 
             <input asp-for="Category.Question" class="form-control" placeholder="Enter Question Text"/>
             <span asp-validation-for="Category.Question" class="text-danger"></span>
-            
+            </div>
             </div>
          <div class="mb-3"> 
             <label asp-for="Category.Skill">Question Area</label>
@@ -34,13 +36,13 @@
         <div class="mb-3"> 
 <label asp-for="Category.Skill">Choose the Team who will see this question</label>               
 <div class="col-9"> 
-              <select asp-for="Category.Team" asp-items="@(new SelectList(Model.TeamsList,"TeamName","Value"))" class="form-select">
+              <select asp-for="Category.TeamName" asp-items="@(new SelectList(Model.TeamsList,"TeamName","TeamName"))" class="form-select">
                <option selected disabled value="">Who is this for?...</option>
            </select>
-            <span asp-validation-for="Category.Team" class="text-danger"></span>
+            <span asp-validation-for="Category.TeamName" class="text-danger"></span>
         </div>
  </div>
- <input hidden asp-for="Category.ValuetoDB" />
+ <input hidden asp-for="Category.Value" />
            <div class="mb-3">
             <label asp-for="Category.DisplayOrder"></label>
             <div class="col-3">
@@ -54,6 +56,7 @@
             <a asp-page="Index" class="btn btn-primary" style="width:180px;">
             <i class="bi bi-emoji-heart-eyes">&nbsp;&nbsp;</i>Back to List</a>
     </div>
+    <input hidden asp-for="Category.TeamId" value="@(Model.TeamsList.First().Id)"/>
 </form>
 
 @section Scripts {

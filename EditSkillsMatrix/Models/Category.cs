@@ -9,18 +9,21 @@ namespace EditSkillsMatrix.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50, ErrorMessage = "50 charachters max my little Cheddar Cheese!!")]
-        public string? Team { get; set; }
+        [MaxLength(50, ErrorMessage = "50 charachters max!!")]
+        [Display(Name = "Team Name")]
+        public string TeamName { get; set; }
+        
+        public int? TeamId { get; set; }
 
         [Required]
-        [MaxLength(250, ErrorMessage = "250 charachters max my little Cheddar Cheese!!")]
-        public string? Question { get; set; }
+        [MaxLength(250, ErrorMessage = "250 charachters max!!")]
+        public string Question { get; set; }
 
      
         [Required]
         [MaxLength(100, ErrorMessage = "Too Long, try shortening the name to under 100 characters")]
-        public string? Skill { get; set; }
-        public string ValuetoDB { get; set; }
+        public string Skill { get; set; }
+        public string Value { get; set; }
 
         public bool? Option1 { get; set; }
 

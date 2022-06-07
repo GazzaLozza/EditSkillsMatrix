@@ -7,19 +7,19 @@
 
 <h1 style="color:HighlightText; color:lawngreen;font-family:Consolas">Create A New Team Entry</h1>
 
-<h4>Team Name and Value that is passed to the Database</h4>
+<h4>Team Name and the Name that is passed onto the Reporting</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
             <div class="form-group">
                 <label asp-for="Teams.TeamName" class="control-label"></label>
                 <input asp-for="Teams.TeamName" class="form-control" />
                 <span asp-validation-for="Teams.TeamName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Teams.Value" class="control-label"></label>
+                <label asp-for="Teams.Value" class="control-label">Name passed onto Reporting</label>
                 <input asp-for="Teams.Value" class="form-control" />
                 <span asp-validation-for="Teams.Value" class="text-danger"></span>
             </div><br />

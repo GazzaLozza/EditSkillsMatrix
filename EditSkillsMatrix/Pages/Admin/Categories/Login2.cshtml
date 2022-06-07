@@ -29,9 +29,12 @@
         <div class="mb-3"> 
             @*<label asp-for="Answers.Role"></label>*@
                  <div class="col-9"> 
-             <input hidden asp-for="Answers.Role" class="form-select">
-                 <span asp-validation-for="Answers.Role" class="text-danger"></span>
+             <input hidden asp-for="Answers.TeamName" class="form-select">
+                 <span asp-validation-for="Answers.TeamName" class="text-danger"></span>
             </div>
+             <input hidden asp-for="Answers.Value" class="form-select">
+             <input hidden asp-for="Answers.TeamId" />
+
           
 
 @foreach (var category in Model.QuestionsByCategory)
@@ -66,7 +69,8 @@
             </div>
             <div>
                 <input hidden name="Answers.User">
-                <input hidden name="Answers.Role">
+                <input hidden name="Answers.TeamName">
+                <input hidden name="Answers.Value">
             </div>
             <br />
         </fieldset>

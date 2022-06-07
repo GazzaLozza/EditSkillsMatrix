@@ -26,8 +26,8 @@ namespace EditSkillsMatrix.Pages.QType
         {
             if (_context.Qtypedb != null)
             {
-                QtypeMod = await _context.Qtypedb.ToListAsync();
-                QtypeModList = await _context.Qtypedb.ToListAsync();
+                QtypeMod = _context.Qtypedb.Where(q => q.Genre != "zZBLANK").OrderBy(q => q.ValuetoDB).ToList();
+                QtypeModList = await _context.Qtypedb.Where(q => q.Genre != "zZBLANK").ToListAsync();
             }
         }
     }
