@@ -29,7 +29,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
                 return NotFound();
             }
 
-            var team =  await _context.Teams.FirstOrDefaultAsync(m => m.Id == id);
+            var team =  await _context.Teams.FirstOrDefaultAsync(m => m.TeamId == id);
             if (team == null)
             {
                 return NotFound();
@@ -55,7 +55,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TeamExists(Teams.Id))
+                if (!TeamExists(Teams.TeamId))
                 {
                     return NotFound();
                 }
@@ -70,7 +70,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
 
         private bool TeamExists(int id)
         {
-          return _context.Teams.Any(e => e.Id == id);
+          return _context.Teams.Any(e => e.TeamId == id);
         }
     }
 }

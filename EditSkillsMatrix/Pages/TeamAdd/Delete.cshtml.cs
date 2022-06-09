@@ -28,7 +28,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
                 return NotFound();
             }
 
-            var team = await _context.Teams.FirstOrDefaultAsync(m => m.Id == id);
+            var team = await _context.Teams.FirstOrDefaultAsync(m => m.TeamId == id);
 
             if (team == null)
             {

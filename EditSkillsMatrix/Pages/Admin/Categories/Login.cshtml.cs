@@ -34,8 +34,10 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
 
         private async Task InitialiseModel()
         {
+            _db.Qtypedb.FromSqlRaw("exec TeamName");
             QuestionsByCategory = (await _db.Category.ToArrayAsync()).GroupBy(category => category.Skill).ToArray();
             Teams = _db.Teams.ToList().Where(t1 => t1.TeamName != "zZBLANK").OrderBy(t1 => t1.TeamName);
+           
         }
 
 
@@ -79,7 +81,9 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
             }
             _db.Answers.Add(Answers);
             //TempData["info"] = "Thanks you for completing the Skills Matrix!";
+            
             await _db.SaveChangesAsync();
+            await _db.Database.ExecuteSqlRawAsync("Exec TeamName");
             return RedirectToPage("Login2", new { Answers.ID });
         }
     }

@@ -9,6 +9,7 @@ namespace EditSkillsMatrix.Pages.Reports
     {
         public void OnGet()
         {
+      
         }
     }
 }

@@ -7,13 +7,15 @@
 
 <h1 style="color:HighlightText; color:lawngreen;font-family:Consolas">Edit</h1>
 
+
+
 <h4>Team</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
         
-            <input type="hidden" asp-for="Teams.Id" />
+            <input type="hidden" asp-for="Teams.TeamId" />
             <div class="form-group">
                 <label asp-for="Teams.TeamName" class="control-label"></label>
                 <input asp-for="Teams.TeamName" class="form-control" />

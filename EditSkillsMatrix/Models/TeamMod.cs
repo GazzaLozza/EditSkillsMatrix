@@ -10,14 +10,15 @@ namespace Models
 {
     public class TeamMod
     {
-      
-        public int Id { get; set; }
+
+        [Key]
+        public int TeamId { get; set; }
            
         [Display(Name = "Team Name")]
         [MaxLength(40)]
         public string TeamName { get; set; }
   
-        [Display(Name = "Value Passed to DB")]
+        [Display(Name = "Value passed on to Reporting")]
         [MaxLength(40)]
         public string Value { get; set; }
 

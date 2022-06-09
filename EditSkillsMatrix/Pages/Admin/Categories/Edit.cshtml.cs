@@ -27,7 +27,8 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
       
         public void OnGet(int ID)
         {
-            
+            _db.Qtypedb.FromSqlRaw("exec TeamName");
+
             Category = _db.Category.Find(ID);
             //Subs = _db.Subjects.Select(a =>
             //                       new SubjectModel
@@ -60,11 +61,13 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                 _db.Category.Update(Category);
                 
                 await _db.SaveChangesAsync();
-             
+                _db.Category.FromSqlRaw("execute TeamName");
+                await _db.Database.ExecuteSqlRawAsync("Exec TeamName");
                 TempData["success"] = "Entry has been Updated!!!";
                
                 return RedirectToPage("/Admin/Categories/Index");
             }
+            
             return Page();
 
         }

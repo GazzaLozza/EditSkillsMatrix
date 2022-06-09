@@ -34,22 +34,23 @@
                   <th>
                    @* <a asp-page="./Index" asp-route-sortOrder="@Model.Team">*@
                     @Html.DisplayNameFor(model => model.Categories[0].TeamName)
-                </a>
+                
+            </th>
+               <th>
+         @*        <a asp-page="./Index" asp-items="@Model.QuestSort">*@
+                Category
+                
             </th>
                 <th>
                    @* <a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort">*@
                     @Html.DisplayNameFor(model => model.Categories[0].Question)
-                </a>
+                
             </th>
-            <th>
-         @*        <a asp-page="./Index" asp-items="@Model.QuestSort">*@
-                Category
-                </a>
-            </th>
+         
             <th>
                 @*<a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort1">*@
                     @Html.DisplayNameFor(model => model.Categories[0].DisplayOrder)
-                </a>
+                
                 </th>
                    <th style="text-align:center">
                     Edit / Delete
@@ -64,11 +65,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => obj.TeamName)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => obj.Question)
+                 <td>
+                    @Html.DisplayFor(modelItem => obj.Skill)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => obj.Skill)
+                    @Html.DisplayFor(modelItem => obj.Question)
                 </td>
                 <td>
                   <div style="text-align:center">

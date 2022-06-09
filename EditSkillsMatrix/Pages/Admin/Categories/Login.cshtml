@@ -8,15 +8,17 @@
 <h1 style="color:HighlightText; color:lawngreen;font-family:Consolas">Edit Skills Matrix</h1>
 <br />  
 </div>  
-<p class="text-success" style="font-family:Consolas"><b>Radio Button Key: </b> <br />1 is the lowest score, and 5 is the highest rated / score</p>
+<div>
+<p style="font-family:Consolas; color:darkorange;"><b>Radio Button Key: </b> <br />1 is the lowest score, and 5 is the highest rated / score</p>
+</div>
 <br />  
  <form asp-action="Submit" asp-controller="Login">
 
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                <div class="form-group form-group-inline col-9">
-                <label asp-for="Answers.User" class="control-label"></label>
-                <input asp-for="Answers.User" class="form-control" placeholder="Add your Name Here.  *Tip:- If you share the same name as another in your team, choose a unique name to you" />
+                <label asp-for="Answers.User" class="control-label">Username   *Tip:- If you share the same name as another in your team, choose a unique name to you</label>
+                <input asp-for="Answers.User" class="form-control" placeholder="Add your Name Here." />
                 <span asp-validation-for="Answers.User" class="text-danger"></span>
             </div><br />
             <div class="form-group form-group-inline">
@@ -29,7 +31,7 @@
            </select>
             <span asp-validation-for="Answers.TeamName" class="text-danger"></span>
             <input hidden asp-for="Answers.Value" />
-             <input hidden asp-for="Answers.TeamId" value="@Model.Teams.FirstOrDefault().Id"/>
+             <input hidden asp-for="Answers.TeamId" value="@Model.Teams.First().TeamId"/>
             </div> <br />   
           <br />  
            <button type="submit" class="btn btn-warning" style="width:180px;">

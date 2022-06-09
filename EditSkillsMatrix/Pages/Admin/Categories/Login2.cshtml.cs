@@ -37,6 +37,8 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                 return NotFound();
             }
 
+            _db.Qtypedb.FromSqlRaw("exec TeamName");
+
             var qtypemod = await _db.Answers.FirstOrDefaultAsync(m => m.ID == id);
           
 
@@ -96,7 +98,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                 var answer = Request.Form[radioGroupName].FirstOrDefault();
                 var user = Request.Form["Answers.User"];
                 var role = Request.Form["Answers.TeamName"];
-                var rol = Request.Form["Answers.Value"];
+               
             
 
 
@@ -107,8 +109,8 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
                     Question = question.Id,
                     Answer = int.Parse(answer), // int from 1 - 5
                     User = user,
-                    TeamName = role,
-                    Value = rol
+                    TeamName = role
+                    
                     
                    
 
@@ -117,6 +119,8 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
             _db.Answers.Add(Answers);
             TempData["info"] = "Thanks you for completing the Skills Matrix! Lets take a look at the reporting pages!";
             await _db.SaveChangesAsync();
+            await _db.Database.ExecuteSqlRawAsync("Exec TeamName");
+
 
             return RedirectToPage("/Reports/Reports");
         }

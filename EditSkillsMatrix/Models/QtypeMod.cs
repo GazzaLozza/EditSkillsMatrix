@@ -18,7 +18,7 @@ namespace Models
         [MaxLength(100, ErrorMessage = "Too Long, try shortening the name to under 100 characters")]
         public string Genre { get; set; }
 
-        [Display(Name = "Value sent to the DB")]
+        [Display(Name = "Value passed on to Reporting")]
         [MaxLength(100, ErrorMessage = "Too Long, try shortening the name to under 100 characters")]
         public string ValuetoDB { get; set; }
 
