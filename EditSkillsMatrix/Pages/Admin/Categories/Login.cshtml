@@ -17,7 +17,7 @@
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                <div class="form-group form-group-inline col-9">
-                <label asp-for="Answers.User" class="control-label">Username   *Tip:- If you share the same name as another in your team, choose a unique name to you</label>
+                <label asp-for="Answers.User" class="control-label">Username   <div style="color:deeppink">*Tip:- If you share the same name as another in your team, choose a unique name to you</div></label>
                 <input asp-for="Answers.User" class="form-control" placeholder="Add your Name Here." />
                 <span asp-validation-for="Answers.User" class="text-danger"></span>
             </div><br />
