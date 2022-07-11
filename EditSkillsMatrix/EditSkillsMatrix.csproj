@@ -30,4 +30,8 @@
     <Folder Include="Security\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\lib\bootstrap\dist\css\features.css" />
+  </ItemGroup>
+
 </Project>
