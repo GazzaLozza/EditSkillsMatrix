@@ -16,7 +16,7 @@ namespace EditSkillsMatrix.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.5")
+                .HasAnnotation("ProductVersion", "6.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -80,6 +80,9 @@ namespace EditSkillsMatrix.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime>("DTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("DisplayOrder")
                         .HasColumnType("int");
 
@@ -103,20 +106,20 @@ namespace EditSkillsMatrix.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Skill")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Team")
+                    b.Property<int?>("TeamId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TeamName")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("User")
+                    b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -160,6 +163,9 @@ namespace EditSkillsMatrix.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<DateTime>("DTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Subjects")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -181,13 +187,16 @@ namespace EditSkillsMatrix.Migrations
                     b.Property<int>("Answer")
                         .HasColumnType("int");
 
-                    b.Property<int>("Order")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Question")
                         .HasColumnType("int");
 
-                    b.Property<string>("Role")
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TeamName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -195,12 +204,15 @@ namespace EditSkillsMatrix.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.ToTable("Answers");
                 });
 
-            modelBuilder.Entity("Models.Team", b =>
+            modelBuilder.Entity("Models.QtypeMod", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -208,30 +220,59 @@ namespace EditSkillsMatrix.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("TeamId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("DTime")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("TeamName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Genre")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ValuetoDB")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("Team");
+                    b.ToTable("Qtypedb");
                 });
 
-            modelBuilder.Entity("Models.Team", b =>
+            modelBuilder.Entity("Models.TeamMod", b =>
                 {
-                    b.HasOne("Models.Team", null)
-                        .WithMany("Teams")
-                        .HasForeignKey("TeamId");
+                    b.Property<int>("TeamId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamId"), 1L, 1);
+
+                    b.Property<DateTime>("DTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("TeamModTeamId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TeamName")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Value")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.HasKey("TeamId");
+
+                    b.HasIndex("TeamModTeamId");
+
+                    b.ToTable("Teams");
                 });
 
-            modelBuilder.Entity("Models.Team", b =>
+            modelBuilder.Entity("Models.TeamMod", b =>
+                {
+                    b.HasOne("Models.TeamMod", null)
+                        .WithMany("Teams")
+                        .HasForeignKey("TeamModTeamId");
+                });
+
+            modelBuilder.Entity("Models.TeamMod", b =>
                 {
                     b.Navigation("Teams");
                 });

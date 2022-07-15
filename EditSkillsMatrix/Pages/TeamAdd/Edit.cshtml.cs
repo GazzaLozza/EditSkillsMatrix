@@ -20,21 +20,21 @@ namespace EditSkillsMatrix.Pages.TeamAdd
         }
 
         [BindProperty]
-        public Team Team { get; set; } = default!;
+        public TeamMod Teams { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Team == null)
+            if (id == null || _context.Teams == null)
             {
                 return NotFound();
             }
 
-            var team =  await _context.Team.FirstOrDefaultAsync(m => m.Id == id);
+            var team =  await _context.Teams.FirstOrDefaultAsync(m => m.TeamId == id);
             if (team == null)
             {
                 return NotFound();
             }
-            Team = team;
+            Teams = team;
             return Page();
         }
 
@@ -47,7 +47,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
                 return Page();
             }
 
-            _context.Attach(Team).State = EntityState.Modified;
+            _context.Attach(Teams).State = EntityState.Modified;
 
             try
             {
@@ -55,7 +55,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TeamExists(Team.Id))
+                if (!TeamExists(Teams.TeamId))
                 {
                     return NotFound();
                 }
@@ -70,7 +70,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
 
         private bool TeamExists(int id)
         {
-          return _context.Team.Any(e => e.Id == id);
+          return _context.Teams.Any(e => e.TeamId == id);
         }
     }
 }

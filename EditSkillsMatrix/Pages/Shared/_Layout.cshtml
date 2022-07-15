@@ -7,15 +7,7 @@
 <html lang="en">
 <head>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SSB4XN9KJJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-SSB4XN9KJJ');
-</script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Skills Matrix</title>
@@ -24,53 +16,40 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/superman.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />   
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-  
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NQBFHGB');</script>
-<!-- End Google Tag Manager -->
 
 
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQBFHGB"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <header>
- 
+
+ <header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-         <a class="navbar-brand active" href="/Index">Skills Matrix</a>
+         <a class="navbar-brand active" href="/Admin/Categories/Login">Edit Skills Matrix</a>
        <span class="visually-hidden">(current)</span>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="/Index">Home
+ @*         <a class="nav-link active" href="/Index">Home
             <span class="visually-hidden">(current)</span>
-          </a>
-        </li>
+          </a>*@
+     @*   </li>
          <li class="nav-item">
           <a class="nav-link" asp-page="/Admin/Categories/Index">Add & Amend Questions</a>
-         </li>
+         </li>*@
         <li class="nav-item">
-          <a class="nav-link" href="/Questions/Questions">Skills Matrix</a>
+          <a class="nav-link" href="/Index">Home Page</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Admin Tables</a>
           <div class="dropdown-menu">
-               <a class="dropdown-item" href="/Questions/Questions">Skills Matrix Questions</a>
-               <a class="dropdown-item" href="/Admin/Categories/Index">Questions Table Admin</a>
-               <a class="dropdown-item" href="/Admin/Categories/Counts">Count of Questions</a>
-               <a class="dropdown-item" href="/Qtype/Index">Question Genres Admin</a>
-               <a class="dropdown-item" href="/TeamAdd/Index">Teams Admin</a>
+               <a class="dropdown-item" href="/Admin/Categories/Index">Questions Admin</a>
+               <a class="dropdown-item" href="/Qtype/Index">Category Types</a>
+               <a class="dropdown-item" href="/TeamAdd/Index">Team Admin</a>
+               <a class="dropdown-item" href="/Admin/Categories/Counts">Qty of Questions by Team</a>
               <div class="dropdown-divider"></div>
                <a class="dropdown-item" href="/Reports/Reports">Reporting</a>
           </div>
@@ -81,6 +60,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      @* <partial name="_LoginPartial" />*@
     </div>
   </div>
+   <form class="d-flex">
+        
+        <a asp-page="/Help/About" class="btn btn-secondary my-2 my-sm-0">Help</a>
+      </form>
   
 </nav>
 
@@ -94,7 +77,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
    
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Skills Matrix &nbsp;&nbsp;<strong>.NET 6 : Bootstrap 5 : toastr  : JavaScript  :  Dependency Injection</strong> @* - <a asp-area="" asp-page="Privacy">Private</a>*@
+            &copy; 2022 - Edit Skills Matrix &nbsp;&nbsp;<strong>.NET 6 : Bootstrap 5 : toastr  : JavaScript  :  Dependency Injection</strong> @* - <a asp-area="" asp-page="Privacy">Private</a>*@
         </div> 
  
     </footer>

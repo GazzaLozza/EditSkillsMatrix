@@ -1,0 +1,83 @@
+﻿@page
+@model EditSkillsMatrix.Pages.Admin.Categories.Login2Model
+@{
+        ViewData["Title"] = "Matrix Questions";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+}
+<form method="post">
+   @* <input hidden asp-for="Answers.ID" />*@
+    
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h1 style="color:peachpuff;font-family:Consolas;">Hi @Model.Answers.User!! Welcome to your '@Model.Answers.TeamName' Skills Matrix Questions</h1>
+            <hr />
+            </div>
+        </div>
+        <br />  
+
+<p class="text-warning" style="font-family:Consolas"><b>Radio Button Key: </b> <br />1 is the lowest score, and 5 is the highest rated / score</p>
+<br />  
+        <div asp-validation-summary=All class=text text-warning></div>
+        <div class="mb-3"> 
+            @*<label asp-for="Answers.User"></label>*@
+            <div class="col-9"> 
+            <input hidden asp-for="Answers.User" class="form-control" placeholder="Enter Category Name"/>
+            <span asp-validation-for="Answers.User" class="text-danger"></span>
+            </div>
+            
+        <div class="mb-3"> 
+            @*<label asp-for="Answers.Role"></label>*@
+                 <div class="col-9"> 
+             <input hidden asp-for="Answers.TeamName" class="form-select">
+                 <span asp-validation-for="Answers.TeamName" class="text-danger"></span>
+            </div>
+             <input hidden asp-for="Answers.Value" class="form-select">
+             <input hidden asp-for="Answers.TeamId" />
+
+          
+
+@foreach (var category in Model.QuestionsByCategory)
+{
+
+    <h1 style="color:aqua;font-family:Consolas;"> @category.Key </h1>
+    
+    @foreach (var question in category.OrderBy(q => q.DisplayOrder))
+    {
+        var radioGroupName = $"Q_{question.Id}";
+        <fieldset class="ml-3 form-group">
+            <legend class="text-success">@question.DisplayOrder : @question.Question </legend>
+            <div class="form-check form-check-inline">      
+                <input type="radio" name="@radioGroupName" class="form-check-input"  value="1">
+                <label style="color:yellow" id="@(radioGroupName)_1">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" name="@radioGroupName" class="form-check-input"  value="2">
+                <label style="color:yellow" id="@(radioGroupName)2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" name="@radioGroupName" class="form-check-input"  value="3">
+                <label style="color:yellow"  id="@(radioGroupName)3">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" name="@radioGroupName" class="form-check-input"  value="4">
+                <label style="color:yellow" id="@(radioGroupName)4">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" name="@radioGroupName" class="form-check-input" value="5">
+                <label style="color:yellow" id="@(radioGroupName)5">5</label>
+            </div>
+            <div>
+                <input hidden name="Answers.User">
+                <input hidden name="Answers.TeamName">
+                <input hidden name="Answers.Value">
+            </div>
+            <br />
+        </fieldset>
+    }
+}
+<br />  
+ <button type="submit" class="btn btn-warning" style="width:180px;">
+            <i class="bi bi-boombox">&nbsp;&nbsp;</i>Submit</button>
+
+</form>

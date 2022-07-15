@@ -10,8 +10,8 @@
 <br />
     <form asp-page="./Index" method="get">
     <div class="form-actions me-2">
-
-            <a asp-page="./Index" class="btn btn-warning"><i class="bi bi-layer-backward"> </i>Back to full List</a>
+        <p>
+            <a asp-page="./Index" class="btn btn-warning"><i class="bi bi-emoji-wink"> </i>Back to full List</a>
         </p>
     </div>
 </form>
@@ -21,16 +21,17 @@
             <tr>
                   <th>
                     <a asp-page="./Index" asp-route-sortOrder="@Model.Team">
-                    @Html.DisplayNameFor(model => model.Categories[0].Team)
+                    @Html.DisplayNameFor(model => model.Categories[0].TeamName)
                 </a>
             <th>
+                <a>
                  Qty of Questions
                 </a>
             </th>
         </thead>
         <tbody>
 
- @foreach(var obj in Model.Categories.GroupBy(c => c.Team))
+ @foreach(var obj in Model.Categories.GroupBy(c => c.TeamName))
             {
             <tr>
                 <td>

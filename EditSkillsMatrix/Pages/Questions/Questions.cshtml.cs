@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 using EditSkillsMatrix.Models;
 using Models;
+using System.Web.Mvc;
+using ActionResult = System.Web.Mvc.ActionResult;
 
 namespace EditSkillsMatrix.Pages.Questions
 {
@@ -24,28 +26,31 @@ namespace EditSkillsMatrix.Pages.Questions
         [BindProperty]
         //These lists are pulled out of the Categpory table and displayed as Questions in the Questions Page
         public IGrouping<string, Category>[] QuestionsByCategory { get; private set; }
-
-
+        public IEnumerable<TeamMod> Teams { get; set; }
+       
+        
+     
 
         //Pulling the Lists and using lambda to organise them into an order, as per the table they are coming from
         public async Task OnGet()
         {
+           
             await InitialiseModel();
+          
         }
 
         private async Task InitialiseModel()
         {
             QuestionsByCategory = (await _db.Category.ToArrayAsync()).GroupBy(category => category.Skill).ToArray();
+            Teams = _db.Teams.ToList();
+           
         }
 
-        //This is where I want to send the Data to.  Currently the receiving Category2 table has the same column setup as the Category table.
-        //This does grab the username and role as long as no Radios are chosen???  Feeling very out of my depth
+     
         [BindProperty]
         public AnswerModel Answers { get; set; }
-
-
-        ///in this bit I now want to catch all of the entries made into the Radio buttons as well the User Name and Department > See HTML
-
+        
+       
         public async Task<IActionResult> OnPostAsync()
         {
 
@@ -72,7 +77,7 @@ namespace EditSkillsMatrix.Pages.Questions
                     Question = question.Id,
                     Answer = int.Parse(answer), // int from 1 - 5
                     User = user,
-                    Role = role
+                    TeamName = role
 
                 });
             }

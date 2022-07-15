@@ -18,13 +18,13 @@ namespace EditSkillsMatrix.Pages.TeamAdd
             _context = context;
         }
 
-        public IList<Team> Team { get;set; } = default!;
+        public IList<TeamMod> Teams { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Team != null)
+            if (_context.Teams != null)
             {
-                Team = await _context.Team.ToListAsync();
+                Teams = await _context.Teams.Where(q => q.TeamName != "zZBLANK").ToListAsync();
             }
         }
     }

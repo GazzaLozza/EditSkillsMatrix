@@ -24,7 +24,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
         }
 
         [BindProperty]
-        public Team Team { get; set; }
+        public TeamMod Teams { get; set; }
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -35,7 +35,7 @@ namespace EditSkillsMatrix.Pages.TeamAdd
                 return Page();
             }
 
-            _context.Team.Add(Team);
+            _context.Teams.Add(Teams);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -4,6 +4,7 @@ using EditSkillsMatrix.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace EditSkillsMatrix.Pages.Admin.Categories
@@ -19,25 +20,34 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         }
         [BindProperty]
         public Category Category { get; set; }
-        [BindProperty]
-        public List<SubjectModel> Subs { get; set; }
-
-
+            
+        public IEnumerable<QtypeMod> QtypeModList { get; set; }
+        public IEnumerable<TeamMod> TeamsList { get; set; }
+        
+      
         public void OnGet(int ID)
         {
-            Category = _db.Category.Find(ID);
-            Subs = _db.Subjects.Select(a =>
-                                   new SubjectModel
-                                   {
+            _db.Qtypedb.FromSqlRaw("exec TeamName");
 
-                                       Subjects = a.Subjects
-                                   }).ToList();
+            Category = _db.Category.Find(ID);
+            //Subs = _db.Subjects.Select(a =>
+            //                       new SubjectModel
+            //                       {
+
+            //                           Subjects = a.Subjects
+            //                       }).ToList();
+
+            TeamsList = _db.Teams.Where(t => t.TeamName != "zZBLANK").ToList();
+            QtypeModList = _db.Qtypedb.Where(p => p.Genre != "zZBLANK").ToList();
+
 
         }
+      
 
 
 
         
+
         public async Task<IActionResult> OnPost()
         {
             //if (Category.Question == Category.Question.ToString())
@@ -49,10 +59,15 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
             if (ModelState.IsValid)
             {
                 _db.Category.Update(Category);
+                
                 await _db.SaveChangesAsync();
+                _db.Category.FromSqlRaw("execute TeamName");
+                await _db.Database.ExecuteSqlRawAsync("Exec TeamName");
                 TempData["success"] = "Entry has been Updated!!!";
+               
                 return RedirectToPage("/Admin/Categories/Index");
             }
+            
             return Page();
 
         }

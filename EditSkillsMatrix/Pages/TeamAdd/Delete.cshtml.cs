@@ -19,16 +19,16 @@ namespace EditSkillsMatrix.Pages.TeamAdd
         }
 
         [BindProperty]
-      public Team Team { get; set; }
+      public TeamMod Teams { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Team == null)
+            if (id == null || _context.Teams == null)
             {
                 return NotFound();
             }
 
-            var team = await _context.Team.FirstOrDefaultAsync(m => m.Id == id);
+            var team = await _context.Teams.FirstOrDefaultAsync(m => m.TeamId == id);
 
             if (team == null)
             {
@@ -36,23 +36,23 @@ namespace EditSkillsMatrix.Pages.TeamAdd
             }
             else 
             {
-                Team = team;
+                Teams = team;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Team == null)
+            if (id == null || _context.Teams == null)
             {
                 return NotFound();
             }
-            var team = await _context.Team.FindAsync(id);
+            var team = await _context.Teams.FindAsync(id);
 
             if (team != null)
             {
-                Team = team;
-                _context.Team.Remove(Team);
+                Teams = team;
+                _context.Teams.Remove(Teams);
                 await _context.SaveChangesAsync();
             }
 
