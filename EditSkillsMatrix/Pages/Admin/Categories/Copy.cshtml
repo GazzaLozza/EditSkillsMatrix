@@ -1,18 +1,18 @@
 ﻿@page
 @model EditSkillsMatrix.Pages.Admin.Categories.EditModel
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Copy";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 <form method="post">
-    <input hidden asp-for="Category.Id" />
+    @*<input hidden asp-for="Category.Id" />*@
     <input hidden asp-for="Category.TeamId" />
     
     <div class="border p-3 mt-4">
         <div class="row pb-2">
-            <h2 style="color:HighlightText; color:lawngreen;font-family:Consolas">Edit this Question</h2>
+            <h2 style="color:HighlightText; color:lawngreen;font-family:Consolas">Edit Question</h2>
             <hr style="color:HighlightText; color:orange;font-family:Consolas"/>
-            <p style="color:HighlightText; color:aquamarine">Change the Wording of this Question and/or the Display Order.  The Unique Question Id, Category and Team will stay the same</p>
+            <p style="color:HighlightText; color:aquamarine">Use this function to quickly manipulate existing questions and re-assign to other teams or categories</p>
             </div>
         </div>
         <div asp-validation-summary=All class=text text-warning></div>
@@ -24,18 +24,18 @@
             </div>
             
         <div class="mb-3"> 
-            <label asp-for="Category.Skill">Question Category assigned to this question</label>
+            <label asp-for="Category.Skill">Question Category</label>
                  <div class="col-9"> 
-             <select disabled asp-for="Category.Skill" asp-items="@(new SelectList(Model.QtypeModList,"Genre","Genre"))" class="form-select">
+             <select asp-for="Category.Skill" asp-items="@(new SelectList(Model.QtypeModList,"Genre","Genre"))" class="form-select">
              
              <option selected disabled value="">Choose...</option>
         
             </select>
             <span asp-validation-for="Category.Skill" class="text-danger"></span>
-         <label asp-for="Category.Skill">The Team who will see this question</label>               
+         <label asp-for="Category.Skill">Choose the Team who will see this question</label>               
 <div class="col-9"> 
-              <select disabled asp-for="Category.TeamName" asp-items="@(new SelectList(Model.TeamsList,"TeamName","TeamName"))" class="form-select">
-               <option selected disabled value="">Who is this for?...</option>
+              <select asp-for="Category.TeamName" asp-items="@(new SelectList(Model.TeamsList,"TeamName","TeamName"))" class="form-select">
+               <option selected disabled value="">Select team to assign to</option>
 
            </select>
             <span asp-validation-for="Category.TeamName" class="text-danger"></span>
@@ -53,11 +53,9 @@
             <i class="bi-clipboard2-data">&nbsp;&nbsp;</i>Submit Changes</button>
             <a asp-page="Index" class="btn btn-primary" style="width:180px;">
             <i class="bi bi-emoji-heart-eyes">&nbsp;&nbsp;</i>Back to List</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           @* <a asp-page="Copy" class="btn btn-secondary" style="width:365px;">
-            <i class="bi-clipboard2-data">&nbsp;&nbsp;</i>Copy this Question <br />to assign to another team</a>*@
+           @* <button type="submit" class="btn btn-secondary" style="width:365px;">
+            <i class="bi-clipboard2-data">&nbsp;&nbsp;</i>Copy this Question <br />to assign to another team</button>*@
     </div> 
-    <input hidden asp-for="Category.TeamName" asp-items="Category.TeamName" />
-    <input hidden asp-for="Category.Skill" asp-items="Category.TeamName" />
 </form>
 
 @section Scripts {

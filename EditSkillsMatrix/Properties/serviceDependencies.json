@@ -3,10 +3,6 @@
     "secrets1": {
       "type": "secrets"
     },
-    "mssql1": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:ApplicationDbContext"
-    },
     "mssql2": {
       "type": "mssql",
       "connectionId": "ConnectionStrings:DefaultConnection2"
@@ -17,7 +13,12 @@
     },
     "mssql4": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:IdentityConnection"
+      "connectionId": "ConnectionStrings:IdentityConnection",
+      "dynamicId": null
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:ApplicationDbContext"
     }
   }
 }

@@ -53,7 +53,7 @@
                 
                 </th>
                    <th style="text-align:center">
-                    Edit / Delete
+                    Edit / Delete / Copy
                 </th>
         </thead>
         <tbody style="font-size:18px">
@@ -79,11 +79,14 @@
               
                         <td>
                     <div class="btn btn-group" role="group" >
-                    <a asp-page="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil"></i>
+                    <a asp-page="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil" data-bs-toggle="tooltip" title="Edit the wording of this question"></i>
                         </a>
                                          
            
-                    <a asp-page="Delete" asp-route-id="@obj.Id" class="btn btn-warning mx-2"><i class="bi bi-trash3"></i>
+                    <a asp-page="Delete" asp-route-id="@obj.Id" class="btn btn-warning mx-2"><i class="bi bi-trash3" data-bs-toggle="tooltip" title="Permanately Delete this Question"></i>
+                        </a>
+
+                    <a asp-page="Copy" asp-route-id="@obj.Id" class="btn btn-secondary mx-2"><i class="bi bi-arrows-angle-expand" data-bs-toggle="tooltip" title="Copy this question over to another team"></i>
                         </a>
                         </div>
                         </td>
