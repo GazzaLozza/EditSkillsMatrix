@@ -120,6 +120,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
             TempData["info"] = "Thanks you for completing the Skills Matrix! Lets take a look at the reporting pages!";
             await _db.SaveChangesAsync();
             await _db.Database.ExecuteSqlRawAsync("Exec TeamName");
+            await _db.Database.ExecuteSqlRawAsync("Exec sp_RemoveBlanks");
 
 
             return RedirectToPage("/Reports/Reports");
