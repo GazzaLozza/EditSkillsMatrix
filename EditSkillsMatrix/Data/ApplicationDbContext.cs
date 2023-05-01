@@ -18,13 +18,12 @@ public class ApplicationDbContext : DbContext
     public DbSet<TeamMod> Teams { get; set; }
     public DbSet<Booking> Bookings { get; set; }
     public DbSet<Category> Category { get; set; }
-
-    
+    public DbSet<UserList> UserList { get; set; }
     public DbSet<SubjectModel> Subjects { get; set; }
     public DbSet<Category2> Category2 { get; set; }
     public DbSet<AnswerModel> Answers { get; set; }
-
-
+    public DbSet<BusinesList> Business { get; set; }
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -38,6 +37,12 @@ public class ApplicationDbContext : DbContext
             action.IsTemporal();
         });
     }
+    
+
+    public DbSet<EditSkillsMatrix.Models.CertsModel> CertsModel { get; set; }
+
+
+  
 
 
 

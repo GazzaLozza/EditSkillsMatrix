@@ -42,16 +42,18 @@
                 
             </th>
                 <th>
+                    @*<a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort1">*@
+                    @Html.DisplayNameFor(model => model.Categories[0].DisplayOrder)
+
+                </th>
+
+                <th>
                    @* <a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort">*@
                     @Html.DisplayNameFor(model => model.Categories[0].Question)
                 
             </th>
          
-            <th>
-                @*<a asp-page="./Index" asp-route-sortOrder="@Model.OrderSort1">*@
-                    @Html.DisplayNameFor(model => model.Categories[0].DisplayOrder)
-                
-                </th>
+            
                    <th style="text-align:center">
                     Edit / Delete / Copy
                 </th>
@@ -68,13 +70,14 @@
                  <td>
                     @Html.DisplayFor(modelItem => obj.Skill)
                 </td>
+                    <td>
+                        <div style="text-align:center">
+                            @Html.DisplayFor(modelItem => obj.DisplayOrder)
+                        </div>
                 <td>
                     @Html.DisplayFor(modelItem => obj.Question)
                 </td>
-                <td>
-                  <div style="text-align:center">
-                    @Html.DisplayFor(modelItem => obj.DisplayOrder)
-                    </div>
+              
                 </td>
               
                         <td>

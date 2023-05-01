@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Models
@@ -19,7 +17,7 @@ namespace Models
         public string User { get; set; }
   
         [BindProperty]
-        [Required(ErrorMessage = "Please choose a team or nearest area")]
+        [Required(ErrorMessage = "Please choose a team or Add a new one using the Admin tab")]
         public string TeamName { get; set; }
         [BindProperty]
         public string Value { get; set; }

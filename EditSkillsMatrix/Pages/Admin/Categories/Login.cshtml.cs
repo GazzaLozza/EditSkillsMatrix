@@ -37,6 +37,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
             _db.Qtypedb.FromSqlRaw("exec TeamName");
             QuestionsByCategory = (await _db.Category.ToArrayAsync()).GroupBy(category => category.Skill).ToArray();
             Teams = _db.Teams.ToList().Where(t1 => t1.TeamName != "zZBLANK").OrderBy(t1 => t1.TeamName);
+            UserLists = _db.UserList.ToList().OrderBy(n1 => n1.Name);
            
         }
 
@@ -45,7 +46,7 @@ namespace EditSkillsMatrix.Pages.Admin.Categories
         public AnswerModel Answers { get; set; }
         [BindProperty]
         public IEnumerable<TeamMod> Teams { get; set; }
-
+        public IEnumerable<UserList> UserLists { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
 
